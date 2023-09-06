@@ -1,0 +1,16 @@
+Parallel-META Analysis Report
+Version 3.4.1
+Domain : Bacteria (16S rRNA)
+Input Type : rRNA Targeted Sequences
+Input File : /mnt/data7/suxq/data/Oral/ISME2013/seq/SRR490705.fasta
+Alignment Mode : very-sensitive-local
+rRNA Sequence Number : 2982
+Mapped rRNA Sequence Number : 2981
+Alpha Diversity:
+Kingdom	1
+Phylum	12
+Class	21
+Order	30
+Family	47
+Genus	70
+OTU	223

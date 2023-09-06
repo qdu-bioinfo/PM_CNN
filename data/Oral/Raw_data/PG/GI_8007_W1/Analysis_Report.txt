@@ -1,0 +1,18 @@
+Parallel-META Analysis Report
+Version 3.4.1
+Domain : Bacteria (16S rRNA)
+Input Type : rRNA Targeted Sequences
+Input File : SoH243_PM3.4_out/Single_Sample/GI_8007_W1/meta.fasta
+Input Paired File : SoH243_PM3.4_out/Single_Sample/GI_8007_W1/meta2.fasta
+Input Paired File rientation : fr
+Alignment Mode : very-sensitive-local
+rRNA Sequence Number : 65002
+Mapped rRNA Sequence Number : 65002
+Alpha Diversity:
+Kingdom	1
+Phylum	22
+Class	39
+Order	77
+Family	125
+Genus	258
+OTU	1548

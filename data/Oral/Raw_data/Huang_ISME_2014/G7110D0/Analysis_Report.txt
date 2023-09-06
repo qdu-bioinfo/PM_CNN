@@ -1,0 +1,16 @@
+Parallel-META Analysis Report
+Version 3.4.1
+Domain : Bacteria (16S rRNA)
+Input Type : rRNA Targeted Sequences
+Input File : /home/gene/huangshi/meta-analysis/gingivitis_PG_OCregimen/seqfiles/OCregimen.7110D0.fasta
+Alignment Mode : very-sensitive-local
+rRNA Sequence Number : 823
+Mapped rRNA Sequence Number : 823
+Alpha Diversity:
+Kingdom	1
+Phylum	7
+Class	11
+Order	17
+Family	25
+Genus	37
+OTU	186

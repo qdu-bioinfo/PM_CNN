@@ -1,0 +1,16 @@
+Parallel-META Analysis Report
+Version 3.4.1
+Domain : Bacteria (16S rRNA)
+Input Type : rRNA Targeted Sequences
+Input File : seq/SRR3667230.fasta
+Alignment Mode : very-sensitive-local
+rRNA Sequence Number : 68874
+Mapped rRNA Sequence Number : 68430
+Alpha Diversity:
+Kingdom	1
+Phylum	15
+Class	30
+Order	51
+Family	77
+Genus	207
+OTU	1693

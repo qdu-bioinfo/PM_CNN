@@ -1,0 +1,18 @@
+Parallel-META Analysis Report
+Version 3.4.1
+Domain : Bacteria (16S rRNA)
+Input Type : rRNA Targeted Sequences
+Input File : SoH243_PM3.4_out/Single_Sample/GI_8044_BL/meta.fasta
+Input Paired File : SoH243_PM3.4_out/Single_Sample/GI_8044_BL/meta2.fasta
+Input Paired File rientation : fr
+Alignment Mode : very-sensitive-local
+rRNA Sequence Number : 42176
+Mapped rRNA Sequence Number : 42175
+Alpha Diversity:
+Kingdom	1
+Phylum	15
+Class	27
+Order	51
+Family	88
+Genus	182
+OTU	1077
