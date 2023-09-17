@@ -1,19 +1,23 @@
-import torch.nn as nn
 import torch
-import torch.nn.functional as F
-import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder
+import pandas as pd
+import torch.nn as nn
 from torch import optim
+import matplotlib.pyplot as plt
+import torch.nn.functional as F
+from config import parse_arguments
+from sklearn.metrics import roc_curve, auc
+from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import cohen_kappa_score
 from torch.utils.data import DataLoader, Dataset
+from sklearn.preprocessing import label_binarize
 from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_score, confusion_matrix
-from config import parse_arguments
+
 args = parse_arguments()
+label_num = 5
 
 
 def main(args):
-
     input_file_X_train = args.train_x
     input_file_X_test = args.test_x
     input_file_Y_train = args.train_y
@@ -23,6 +27,7 @@ def main(args):
     channels = args.channel
     ker_size = args.kernel_size
     strides = args.strides
+    res = args.res
 
     def int_str():
         MyFea_df = pd.read_csv(args.sequence)
@@ -118,16 +123,20 @@ def main(args):
         def __init__(self):
             super(Net, self).__init__()
             self.conv1_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
-            self.conv1_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
+            self.conv1_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
+                                     padding=1)
 
             self.conv2_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
-            self.conv2_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
+            self.conv2_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
+                                     padding=1)
 
             self.conv3_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
-            self.conv3_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
+            self.conv3_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
+                                     padding=1)
 
             self.conv4_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
-            self.conv4_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
+            self.conv4_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
+                                     padding=1)
 
             self.fc1 = nn.Linear(22336, 64)
             self.fc2 = nn.Linear(64, 5)
@@ -194,18 +203,20 @@ def main(args):
     #     with torch.no_grad():
     #         acc = 0
     #         total = 0
-    #         y_pred = []
+    #         y_predict = []
     #         y_true = []
-    #         for i, data1 in enumerate(verify_loader):
-    #             data2, label2 = data1
-    #             x_test1, x_test2, x_test3, x_test4 = data2
-    #             outputs = model(x_test1, x_test2, x_test3, x_test4)
-    #             pred = torch.max(outputs, dim=1)[1]
-    #             y_pred.extend(pred.tolist())
-    #             y_true.extend(label2.tolist())
+    #         for i, data in enumerate(verify_loader):
+    #             verify_data, label = data
+    #             x_verify1, x_verify2, x_verify3, x_verify4 = verify_data
+    #             outputs = model(x_verify1, x_verify2, x_verify3, x_verify4)
+    #             predict = torch.max(outputs, dim=1)[1]
+    #             y_predict.extend(predict.tolist())
+    #             y_true.extend(label.tolist())
 
     def PM_CNN_test():
         model.eval()
+        probabilities = []
+        true_labels = []
         with torch.no_grad():
             acc = 0
             total = 0
@@ -215,15 +226,20 @@ def main(args):
                 data2, label2 = data1
                 x_test1, x_test2, x_test3, x_test4 = data2
                 outputs = model(x_test1, x_test2, x_test3, x_test4)
+                probabilities.append(outputs.numpy())
+                true_labels.append(label2.numpy())
                 pred = torch.max(outputs, dim=1)[1]
                 acc += torch.eq(pred, label2).sum().item()
                 y_pre.extend(pred.tolist())
                 y_label.extend(label2.tolist())
 
+            pred_classes = pred
+            probabilities = np.concatenate(probabilities)
+            true_labels = np.concatenate(true_labels)
+
             kappa_score = cohen_kappa_score(y_label, y_pre)
             print("Kappa Score: {:.4f}".format(kappa_score))
 
-            pred_classes = pred
             f1 = f1_score(y_label, pred_classes, average='macro')
             accuracy = accuracy_score(y_label, pred_classes)
             precision = precision_score(y_label, pred_classes, average='macro')
@@ -238,16 +254,41 @@ def main(args):
         print('Recall:', recall)
         print('Sensitivity:', sensitivity_avg)
 
+        return probabilities, true_labels
+
+    def draw_ROC_curve(total_label, probabilities, true_labels):
+        num_classes = total_label
+        binarized_labels = label_binarize(true_labels, classes=[0, 1, 2, 3, 4])
+        fpr = dict()
+        tpr = dict()
+        roc_auc = dict()
+
+        for i in range(num_classes):
+            fpr[i], tpr[i], _ = roc_curve(binarized_labels[:, i], probabilities[:, i])
+            roc_auc[i] = auc(fpr[i], tpr[i])
+
+        plt.figure()
+        colors = ['deeppink', 'navy', 'aqua', 'darkorange', 'cornflowerblue']
+
+        for i in range(num_classes):
+            plt.plot(fpr[i], tpr[i], color=colors[i], lw=2,
+                     label='ROC curve of class {0} (area = {1:0.2f})'
+                           ''.format(i, roc_auc[i]))
+
+        plt.plot([0, 1], [0, 1], color='black', lw=2, linestyle='--')
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('False Positive Rate')
+        plt.ylabel('True Positive Rate')
+        plt.title('Receiver Operating Characteristic')
+        plt.legend(loc="lower right")
+        plt.savefig(res + 'Gut_result.png')
+
     for epoch in range(EPOCH):
         PM_CNN_train()
-    PM_CNN_test()
+    proba, tru_label = PM_CNN_test()
+    draw_ROC_curve(label_num, proba, tru_label)
 
 
 if __name__ == '__main__':
-
     main(args)
-
-
-
-
-

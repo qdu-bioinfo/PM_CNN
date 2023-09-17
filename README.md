@@ -113,6 +113,7 @@ Now, we have the training data and test data needed by the model. Next, we will 
 usage: model/PM_cnn.py[--train_x] [--train_y] //training set directory
                                         [--test_x] [--test_y] //test set directory.
                                         [--sequence] //clustering results
+					[--res] //ROC curve for each label
                                         [--batch_size] //batch_size
                                         [--learning_rate] //learning rate
                                         [--channel] //number of input and output channels
@@ -129,7 +130,7 @@ cd PM_CNN/model
 ```
 
 ```
-python PM_cnn.py --train_x ../data/Gut/train_data/X_train_5597.csv --train_y ../data/Gut/train_data/y_train_5597.csv --test_x ../data/Gut/test_data/X_test_5597.csv --test_y ../data/Gut/test_data/y_test_5597.csv --sequence ../data/Gut/Gut_feature.csv --batch_size 64 --epoch 34 --learning_rate 5e-3 --channel 16 --kernel_size 8 --strides 4
+python PM_cnn.py --train_x ../data/Gut/train_data/X_train_5597.csv --train_y ../data/Gut/train_data/y_train_5597.csv --test_x ../data/Gut/test_data/X_test_5597.csv --test_y ../data/Gut/test_data/y_test_5597.csv --sequence ../data/Gut/Gut_feature.csv --batch_size 64 --epoch 34 --learning_rate 5e-3 --channel 16 --kernel_size 8 --strides 4 --res ../result/
 ```
 
 ## Contact

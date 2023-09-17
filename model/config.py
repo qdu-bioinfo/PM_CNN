@@ -14,6 +14,8 @@ def parse_arguments():
 
     parser.add_argument('--sequence', type=str, default='../data/Gut/Gut_feature.csv')
 
+    parser.add_argument('--res', type=str, default='../result/')
+
     parser.add_argument('--batch_size', type=int, default=64)
 
     parser.add_argument('--epoch', type=int, default=34)
