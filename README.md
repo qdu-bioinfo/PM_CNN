@@ -67,7 +67,7 @@ python example/code/delete_feature.py
 
 ### Get representative sequence:
 ```
-python proprecess/get_represent_seqs.py  // you need to download GreenGenes database
+python example/code/get_represent_seqs.py  // you need to download GreenGenes database
 ```
 
 The evolutionary tree of the representative sequence is constructed by FastTree and Mafft, and the distance matrix is obtained by using the cophenetic function in the R package ape. The related software can be downloaded to the official website, or please contact my e-mail. The commands involved are as follows:
