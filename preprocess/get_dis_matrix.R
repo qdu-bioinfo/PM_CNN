@@ -3,7 +3,7 @@ install.packages("ape")
                       
 library(ape)
 
-tree <- read.tree("Gut.tree")
+tree <- read.tree("ex.tree")
 
 distances <- cophenetic(tree)
 

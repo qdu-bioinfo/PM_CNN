@@ -1,10 +1,10 @@
-from clustering import get_id
+from clustering import My_order
 import pandas as pd
 
 print("-----------------------starting----------------------")
 
-input_file = "../data/Gut_cd_5597.csv"
-My_fea_savefile = "../data/My_cd_feature.csv"
+input_file = "../data/Oral/oral_1554.csv"
+My_fea_savefile = "../data/Oral/Oral_feature.csv"
 
 data = pd.read_csv(input_file)
 raw_order = data.iloc[:, 0].tolist()
@@ -26,7 +26,6 @@ def save():
     print(result.head())
 
 
-My_order = get_id()
 My_feature = get_fea()
 save()
 print("-----------------------over----------------------")

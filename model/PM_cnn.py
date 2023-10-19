@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import torch.nn.functional as F
 from config import parse_arguments
 from sklearn.metrics import roc_curve, auc
+from scipy.ndimage import gaussian_filter1d
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import cohen_kappa_score
 from torch.utils.data import DataLoader, Dataset
@@ -198,20 +199,20 @@ def main(args):
                 print('Epoch [{}/{}]-----------------------Loss: {:.4f}'
                       .format(epoch + 1, EPOCH, loss.item()))
 
-    # def PM_CNN_eval():
-    #     model.eval()
-    #     with torch.no_grad():
-    #         acc = 0
-    #         total = 0
-    #         y_predict = []
-    #         y_true = []
-    #         for i, data in enumerate(verify_loader):
-    #             verify_data, label = data
-    #             x_verify1, x_verify2, x_verify3, x_verify4 = verify_data
-    #             outputs = model(x_verify1, x_verify2, x_verify3, x_verify4)
-    #             predict = torch.max(outputs, dim=1)[1]
-    #             y_predict.extend(predict.tolist())
-    #             y_true.extend(label.tolist())
+    def PM_CNN_eval():
+        model.eval()
+        with torch.no_grad():
+            acc = 0
+            total = 0
+            y_predict = []
+            y_true = []
+            # for i, data in enumerate(verify_loader):
+            #     verify_data, label = data
+            #     x_verify1, x_verify2, x_verify3, x_verify4 = verify_data
+            #     outputs = model(x_verify1, x_verify2, x_verify3, x_verify4)
+            #     predict = torch.max(outputs, dim=1)[1]
+            #     y_predict.extend(predict.tolist())
+            #     y_true.extend(label.tolist())
 
     def PM_CNN_test():
         model.eval()
@@ -257,6 +258,8 @@ def main(args):
         return probabilities, true_labels
 
     def draw_ROC_curve(total_label, probabilities, true_labels):
+        file_namelist = ['Control', 'IBD', 'HIV', 'EDD', 'CRC']
+        plt.figure(figsize=(10, 7), dpi=1600)
         num_classes = total_label
         binarized_labels = label_binarize(true_labels, classes=[0, 1, 2, 3, 4])
         fpr = dict()
@@ -265,23 +268,19 @@ def main(args):
 
         for i in range(num_classes):
             fpr[i], tpr[i], _ = roc_curve(binarized_labels[:, i], probabilities[:, i])
-            roc_auc[i] = auc(fpr[i], tpr[i])
+            roc_auc[i] = 100 * auc(fpr[i], tpr[i])
 
         plt.figure()
-        colors = ['deeppink', 'navy', 'aqua', 'darkorange', 'cornflowerblue']
 
         for i in range(num_classes):
-            plt.plot(fpr[i], tpr[i], color=colors[i], lw=2,
-                     label='ROC curve of class {0} (area = {1:0.2f})'
-                           ''.format(i, roc_auc[i]))
+            plt.plot(fpr[i], tpr[i], lw=1, alpha=0.7, label='%s    (AUC=%0.2f%%)' % (file_namelist[i], roc_auc[i]))
 
-        plt.plot([0, 1], [0, 1], color='black', lw=2, linestyle='--')
         plt.xlim([0.0, 1.0])
-        plt.ylim([0.0, 1.05])
+        plt.ylim([0.0, 1.0])
         plt.xlabel('False Positive Rate')
         plt.ylabel('True Positive Rate')
         plt.title('Receiver Operating Characteristic')
-        plt.legend(loc="lower right")
+        plt.legend(loc="lower right", prop={'size':8})
         plt.savefig(res + 'Gut_result.png')
 
     for epoch in range(EPOCH):

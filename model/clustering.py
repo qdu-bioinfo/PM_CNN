@@ -1,10 +1,12 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import silhouette_score
 from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
 
 
-input_file = "../data/Gut_cd_5597.csv"
-out_file = "../data/Gut_cd_5597_tran.csv"
+input_file = "../data/Oral/oral_1554.csv"
+out_file = "../data/Oral/oral_1554_tran.csv"
 
 
 def drop_row_col(infile1, outfile1):
@@ -27,14 +29,14 @@ def zero_one(infile2):
     return max_value1, min_value1
 
 
-# drop_row_col(input_file, out_file)
-# max_value, min_value = zero_one(out_file)
+drop_row_col(input_file, out_file)
+max_value, min_value = zero_one(out_file)
 
 print("\n-------------------waiting-----------------------\n")
-thresholds = [0.05, 0.1, 0.15, 0.5]
+thresholds = [0.38, 0.45, 0.3, 0.05]
 length = len(thresholds)
-intermediate_file = r"../data/Gut_cd_5597_tran.npy"
-output_file = "../data/Gut_cd_5597_tran.npy"
+intermediate_file = r"../data/Oral/oral_1554_tran.npy"
+output_file = "../data/Oral/oral_1554_tran.npy"
 
 
 def csv_npy(infile1, intermediate_file1, outfile1):
@@ -55,15 +57,26 @@ def hierarchical_clustering(distance_matrix):
     x = list(range(distance_matrix.shape[0]))
     X = np.array(x)
     linked = linkage(np.reshape(X, (len(X), 1)), metric=my_dist, method='single')
-    result1 = [[] for _ in range(length)]
-    result_best = fcluster(linked, t=0.51, criterion='distance')
+    result = [[] for _ in range(length)]
     for i, threshold in enumerate(thresholds):
         clusters = fcluster(linked, t=threshold, criterion='distance')
         for j, item in enumerate(clusters):
-            result1[i].append(item)
+            result[i].append(item)
+
+    thres = np.linspace(0.05, 0.5, num=10)
+    best_result = None
+    best_silhouette = -1.0
+
+    for thres in thres:
+        cluster_best = fcluster(linked, t=thres, criterion='distance')
+        silhouette = silhouette_score(distance_matrix, cluster_best)
+        if silhouette > best_silhouette:
+            best_result = cluster_best
+            best_silhouette = silhouette
+
     dendrogram(linked, orientation='top', distance_sort='descending', show_leaf_counts=True)
 
-    return result1, result_best
+    return result, best_result
 
 
 def index_of_duplicates(arr):
@@ -79,7 +92,7 @@ def index_of_duplicates(arr):
     return last_order
 
 
-def get_id():
+def get_id(result):
     last_order = [[] for _ in range(length)]
     for i in range(length):
         last_order[i] = index_of_duplicates(result[i])
@@ -94,17 +107,16 @@ def prin():
 data, data_sum = csv_npy(out_file, intermediate_file, output_file)
 result, result_best = hierarchical_clustering(data)
 result_index = index_of_duplicates(result_best)
-data = pd.read_csv("../data/Gut_cd_5597.csv")
+
+data = pd.read_csv("../data/Oral/oral_1554.csv")
 raw_order = data.iloc[:, 0].tolist()
 My_fea = []
 for x in result_index:
     My_fea.append(raw_order[x])
-# print(result_best)
 data = pd.DataFrame(My_fea)
-data.to_csv("../data/05_fea.csv", index=False)
-My_order = get_id()
-# prin()
-# plt.show()
-# plt.savefig('../data/Gut_clustering_result.png')
+My_order = get_id(result)
+prin()
+plt.show()
+# plt.savefig('../result/clustering_result.png')
 
 print("\n------------------------over---------------------------\n")
