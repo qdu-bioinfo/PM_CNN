@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 ## Data preprocess
 
-First of all, we need to preprocess the data to get the information we want from the original data. Here, we take the gut data set as an example to demonstrate. In addition, after downloading our project files and configuring the relevant environment, if you want to run PM-CNN quickly, you can jump directly to the Model training and prediction section, copy the code and run it.
+First, we need to preprocess the data to obtain our sample abundance information from the original data. Here, we take the data in the example file as an example to demonstrate. If you want to run PM-CNN quickly, you can jump directly to the Model training and prediction section and run the relevant commands.
 
 table1:
 | OTU_id | Count | Abundance |
@@ -47,7 +47,7 @@ table2:
 
 ### Merge all tables:
 ```
-python preprocess/preprocess.py
+python example/code/preprocess.py
 ```
 
 ### Merged abundance table:
@@ -62,29 +62,29 @@ python preprocess/preprocess.py
 
 ### Remove features with a 0 value ratio greater than 90%:
 ```
-python proprecess/delete_feature.py
+python example/code/delete_feature.py
 ```
 
 ### Get representative sequence:
 ```
-python proprecess/get_represent_seqs.py
+python proprecess/get_represent_seqs.py  // you need to download GreenGenes database
 ```
 
 The evolutionary tree of the representative sequence is constructed by FastTree and Mafft, and the distance matrix is obtained by using the cophenetic function in the R package ape. The related software can be downloaded to the official website, or please contact my e-mail. The commands involved are as follows:
 
 ### Mafft(Multiple sequence alignment):
 ```
-mafft --auto input.fasta > output.fasta
+mafft --auto example/data/ex_respresent.txt > output.fasta
 ```
 
 ### FastTree(Construct a phylogenetic tree):
 ```
-FastTree -nt -gtr output.fasta > gut.tree
+FastTree -nt -gtr  example/data/output.fasta > ex.tree
 ```
 
 ### R script(Get distance matrix):
 ```
-Rscript proprecess/get_dis_matrix.R
+Rscript example/code/get_dis_matrix.R
 ```
 After obtaining the distance matrix, we aim to obtain the phylogenetic correlation between OTU. Therefore, the next step is to transform the distance matrix into the correlation matrix by the designed distance transformation formula, and then carry out hierarchical clustering based on the correlation matrix, and finally get the result of multi-layer clustering.
 
