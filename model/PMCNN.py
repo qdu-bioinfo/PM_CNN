@@ -15,7 +15,10 @@ from sklearn.preprocessing import label_binarize
 from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_score, confusion_matrix
 
 args = parse_arguments()
-label_num = 5
+label_num = 3
+seed = 1
+torch.manual_seed(seed)
+np.random.seed(seed)
 
 
 def main(args):
@@ -109,64 +112,52 @@ def main(args):
         def __getitem__(self, index):
             return (self.x1[index], self.x2[index], self.x3[index], self.x4[index]), self.y[index]
 
+    # 最终得到的训练集和测试集输入数据
     x_train_list, x_test_list = arr_tensor()
 
+    # 将训练样本顺序打乱，并设置batch_size大小
     train_dataset = MyDataset(x_train_list[0], x_train_list[1], x_train_list[2], x_train_list[3], y_train)
-    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
+    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
 
     # verify_dataset = MyDataset(x_verify_list[0], x_verify_list[1], x_verify_list[2], x_verify_list[3], y_verify)
-    # verify_loader = DataLoader(verify_dataset, batch_size=218)
+    # verify_loader = DataLoader(train_dataset, batch_size=159)
 
     test_dataset = MyDataset(x_test_list[0], x_test_list[1], x_test_list[2], x_test_list[3], y_test)
-    test_loader = DataLoader(test_dataset, batch_size=934)
+    test_loader = DataLoader(test_dataset, batch_size=477)
 
     class Net(torch.nn.Module):
         def __init__(self):
             super(Net, self).__init__()
-            self.conv1_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
-            self.conv1_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
-                                     padding=1)
-
-            self.conv2_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
-            self.conv2_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
-                                     padding=1)
-
-            self.conv3_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
-            self.conv3_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
-                                     padding=1)
-
-            self.conv4_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
-            self.conv4_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
-                                     padding=1)
-
-            self.fc1 = nn.Linear(22336, 64)
-            self.fc2 = nn.Linear(64, 5)
+            self.conv1_1 = nn.Conv1d(1, out_channels=64, kernel_size=8, stride=4, padding=1)
+            self.conv1_2 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=8, stride=4, padding=1)
+            self.fc1 = nn.Linear(24576, 64)
+            self.fc2 = nn.Linear(64, 3)
 
         def forward(self, x1, x2, x3, x4):
-            x1 = x1.reshape(-1, 1, 5597)
-            x2 = x2.reshape(-1, 1, 5597)
-            x3 = x3.reshape(-1, 1, 5597)
-            x4 = x4.reshape(-1, 1, 5597)
+            x1 = x1.reshape(-1, 1, 1554)
+            x2 = x2.reshape(-1, 1, 1554)
+            x3 = x3.reshape(-1, 1, 1554)
+            x4 = x4.reshape(-1, 1, 1554)
 
             x1 = F.tanh(self.conv1_1(x1))
-            x1 = nn.BatchNorm1d(num_features=16)(x1)
+            x1 = nn.BatchNorm1d(num_features=64)(x1)
             x1 = F.tanh(self.conv1_2(x1))
-            x1 = nn.BatchNorm1d(num_features=16)(x1)
+            x1 = nn.BatchNorm1d(num_features=64)(x1)
 
-            x2 = F.tanh(self.conv2_1(x2))
-            x2 = nn.BatchNorm1d(num_features=16)(x2)
-            x2 = F.tanh(self.conv2_2(x2))
-            x2 = nn.BatchNorm1d(num_features=16)(x2)
+            x2 = F.tanh(self.conv1_1(x2))
+            x2 = nn.BatchNorm1d(num_features=64)(x2)
+            x2 = F.tanh(self.conv1_2(x2))
+            x2 = nn.BatchNorm1d(num_features=64)(x2)
 
-            x3 = F.tanh(self.conv3_1(x3))
-            x3 = nn.BatchNorm1d(num_features=16)(x3)
-            x3 = F.tanh(self.conv3_2(x3))
-            x3 = nn.BatchNorm1d(num_features=16)(x3)
+            x3 = F.tanh(self.conv1_1(x3))
+            x3 = nn.BatchNorm1d(num_features=64)(x3)
+            x3 = F.tanh(self.conv1_2(x3))
+            x3 = nn.BatchNorm1d(num_features=64)(x3)
 
-            x4 = F.tanh(self.conv4_1(x4))
-            x4 = nn.BatchNorm1d(num_features=16)(x4)
-            x4 = F.tanh(self.conv4_2(x4))
-            x4 = nn.BatchNorm1d(num_features=16)(x4)
+            x4 = F.tanh(self.conv1_1(x4))
+            x4 = nn.BatchNorm1d(num_features=64)(x4)
+            x4 = F.tanh(self.conv1_2(x4))
+            x4 = nn.BatchNorm1d(num_features=64)(x4)
 
             x1 = x1.view(x1.size(0), -1)
             x2 = x2.view(x2.size(0), -1)
@@ -176,13 +167,13 @@ def main(args):
             x = self.fc1(x)
             x = nn.BatchNorm1d(num_features=64)(x)
             x = F.tanh(x)
-            x = self.fc2(x)
+            x = F.softmax(self.fc2(x))
 
             return x
 
     model = Net()
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=args.learning_rate)
+    optimizer = optim.Adam(model.parameters(), lr=5e-3)
     EPOCH = args.epoch
 
     def PM_CNN_train():
@@ -196,23 +187,8 @@ def main(args):
             loss.backward()
             optimizer.step()
             if (i + 1) % 10 == 0:
-                print('Epoch [{}/{}]-----------------------Loss: {:.4f}'
-                      .format(epoch + 1, EPOCH, loss.item()))
-
-    def PM_CNN_eval():
-        model.eval()
-        with torch.no_grad():
-            acc = 0
-            total = 0
-            y_predict = []
-            y_true = []
-            # for i, data in enumerate(verify_loader):
-            #     verify_data, label = data
-            #     x_verify1, x_verify2, x_verify3, x_verify4 = verify_data
-            #     outputs = model(x_verify1, x_verify2, x_verify3, x_verify4)
-            #     predict = torch.max(outputs, dim=1)[1]
-            #     y_predict.extend(predict.tolist())
-            #     y_true.extend(label.tolist())
+                print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'
+                      .format(epoch + 1, EPOCH, i + 1, len(train_loader), loss.item()))
 
     def PM_CNN_test():
         model.eval()
@@ -258,10 +234,10 @@ def main(args):
         return probabilities, true_labels
 
     def draw_ROC_curve(total_label, probabilities, true_labels):
-        file_namelist = ['Control', 'IBD', 'HIV', 'EDD', 'CRC']
+        file_namelist = ['Control', 'Gingivitis', 'Periodontitis']
         plt.figure(figsize=(10, 7), dpi=1600)
         num_classes = total_label
-        binarized_labels = label_binarize(true_labels, classes=[0, 1, 2, 3, 4])
+        binarized_labels = label_binarize(true_labels, classes=[0, 1, 2])
         fpr = dict()
         tpr = dict()
         roc_auc = dict()
@@ -276,12 +252,12 @@ def main(args):
             plt.plot(fpr[i], tpr[i], lw=1, alpha=0.7, label='%s    (AUC=%0.2f%%)' % (file_namelist[i], roc_auc[i]))
 
         plt.xlim([0.0, 1.0])
-        plt.ylim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
         plt.xlabel('False Positive Rate')
         plt.ylabel('True Positive Rate')
         plt.title('Receiver Operating Characteristic')
-        plt.legend(loc="lower right", prop={'size':8})
-        plt.savefig(res + 'Gut_result.png')
+        plt.legend(loc="lower right", prop={'size': 8})
+        plt.savefig(res + 'result.png')
 
     for epoch in range(EPOCH):
         PM_CNN_train()
