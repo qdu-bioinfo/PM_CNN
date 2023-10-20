@@ -110,7 +110,7 @@ Now, we have the training data and test data needed by the model. Next, we will 
 #### You can see the parameters of PM-CNN through the comment information:
 
 ```
-usage: model/PM_cnn.py[--train_x] [--train_y] //training set directory
+usage: model/PMCNN.py[--train_x] [--train_y] //training set directory
                                         [--test_x] [--test_y] //test set directory.
                                         [--sequence] //clustering results
 					[--res] //ROC curve for each label
