@@ -123,14 +123,14 @@ usage: model/PM_cnn.py[--train_x] [--train_y] //training set directory
 
 ### Example
 
-The human gut microbiome data contains 3113 samples with 5597 OTUs. See our paper for description details. Also, in order for you to run our program quickly, we integrated the training and testing parts of the model. The output results can be viewed in the console, or please move to the result folder, we have saved 10 running results in advance for your quick viewing.
+The human oral microbiome data contains 1587 samples with 1554 OTUs. See our paper for description details. Also, in order for you to run our program quickly, we integrated the training and testing parts of the model. The output results can be viewed in the console, or please move to the result folder, we have saved 10 running results in advance for your quick viewing.
 
 ```
 cd PM_CNN/model
 ```
 
 ```
-python PM_cnn.py --train_x ../data/Gut/train_data/X_train_5597.csv --train_y ../data/Gut/train_data/y_train_5597.csv --test_x ../data/Gut/test_data/X_test_5597.csv --test_y ../data/Gut/test_data/y_test_5597.csv --sequence ../data/Gut/Gut_feature.csv --batch_size 64 --epoch 34 --learning_rate 5e-3 --channel 16 --kernel_size 8 --strides 4 --res ../result/
+python PMCNN.py --train_x ../data/Oral/train_data/X_train_1554.csv --train_y ../data/Oral/train_data/y_train_1554.csv --test_x ../data/Oral/test_data/X_test_1554.csv --test_y ../data/Oral/test_data/y_test_1554.csv --sequence ../data/Oral/Oral_feature.csv --batch_size 32 --epoch 35 --learning_rate 5e-3 --channel 64 --kernel_size 8 --strides 4 --res ../result/
 ```
 
 ## Contact
