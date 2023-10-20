@@ -260,7 +260,7 @@ def main(args):
             plt.plot(fpr[i], tpr[i], lw=1, alpha=0.7, label='%s    (AUC=%0.2f%%)' % (file_namelist[i], roc_auc[i]))
 
         plt.xlim([0.0, 1.0])
-        plt.ylim([0.0, 1.05])
+        plt.ylim([0.0, 1.0])
         plt.xlabel('False Positive Rate')
         plt.ylabel('True Positive Rate')
         plt.title('Receiver Operating Characteristic')
