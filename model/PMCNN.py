@@ -16,9 +16,9 @@ from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_sc
 
 args = parse_arguments()
 label_num = 3
-seed = 1
-torch.manual_seed(seed)
-np.random.seed(seed)
+# seed = 11
+# torch.manual_seed(seed)
+# np.random.seed(seed)
 
 
 def main(args):
@@ -112,15 +112,10 @@ def main(args):
         def __getitem__(self, index):
             return (self.x1[index], self.x2[index], self.x3[index], self.x4[index]), self.y[index]
 
-    # 最终得到的训练集和测试集输入数据
     x_train_list, x_test_list = arr_tensor()
 
-    # 将训练样本顺序打乱，并设置batch_size大小
     train_dataset = MyDataset(x_train_list[0], x_train_list[1], x_train_list[2], x_train_list[3], y_train)
-    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-
-    # verify_dataset = MyDataset(x_verify_list[0], x_verify_list[1], x_verify_list[2], x_verify_list[3], y_verify)
-    # verify_loader = DataLoader(train_dataset, batch_size=159)
+    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
 
     test_dataset = MyDataset(x_test_list[0], x_test_list[1], x_test_list[2], x_test_list[3], y_test)
     test_loader = DataLoader(test_dataset, batch_size=477)
@@ -128,8 +123,21 @@ def main(args):
     class Net(torch.nn.Module):
         def __init__(self):
             super(Net, self).__init__()
-            self.conv1_1 = nn.Conv1d(1, out_channels=64, kernel_size=8, stride=4, padding=1)
-            self.conv1_2 = nn.Conv1d(in_channels=64, out_channels=64, kernel_size=8, stride=4, padding=1)
+            self.conv1_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
+            self.conv1_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
+                                     padding=1)
+
+            self.conv2_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
+            self.conv2_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
+                                     padding=1)
+
+            self.conv3_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
+            self.conv3_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
+                                     padding=1)
+
+            self.conv4_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
+            self.conv4_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
+                                     padding=1)
             self.fc1 = nn.Linear(24576, 64)
             self.fc2 = nn.Linear(64, 3)
 
@@ -144,19 +152,19 @@ def main(args):
             x1 = F.tanh(self.conv1_2(x1))
             x1 = nn.BatchNorm1d(num_features=64)(x1)
 
-            x2 = F.tanh(self.conv1_1(x2))
+            x2 = F.tanh(self.conv2_1(x2))
             x2 = nn.BatchNorm1d(num_features=64)(x2)
-            x2 = F.tanh(self.conv1_2(x2))
+            x2 = F.tanh(self.conv2_2(x2))
             x2 = nn.BatchNorm1d(num_features=64)(x2)
 
-            x3 = F.tanh(self.conv1_1(x3))
+            x3 = F.tanh(self.conv3_1(x3))
             x3 = nn.BatchNorm1d(num_features=64)(x3)
-            x3 = F.tanh(self.conv1_2(x3))
+            x3 = F.tanh(self.conv3_2(x3))
             x3 = nn.BatchNorm1d(num_features=64)(x3)
 
-            x4 = F.tanh(self.conv1_1(x4))
+            x4 = F.tanh(self.conv4_1(x4))
             x4 = nn.BatchNorm1d(num_features=64)(x4)
-            x4 = F.tanh(self.conv1_2(x4))
+            x4 = F.tanh(self.conv4_2(x4))
             x4 = nn.BatchNorm1d(num_features=64)(x4)
 
             x1 = x1.view(x1.size(0), -1)
@@ -187,8 +195,8 @@ def main(args):
             loss.backward()
             optimizer.step()
             if (i + 1) % 10 == 0:
-                print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'
-                      .format(epoch + 1, EPOCH, i + 1, len(train_loader), loss.item()))
+                print('Epoch [{}/{}]-----------------------Loss: {:.4f}'
+                      .format(epoch + 1, EPOCH, loss.item()))
 
     def PM_CNN_test():
         model.eval()
