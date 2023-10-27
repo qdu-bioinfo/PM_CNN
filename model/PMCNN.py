@@ -246,12 +246,13 @@ def main(args):
         plt.figure(figsize=(10, 7), dpi=1600)
         num_classes = total_label
         binarized_labels = label_binarize(true_labels, classes=[0, 1, 2])
+        binarized_pro = label_binarize(probabilities, classes=[0, 1, 2])
         fpr = dict()
         tpr = dict()
         roc_auc = dict()
 
         for i in range(num_classes):
-            fpr[i], tpr[i], _ = roc_curve(binarized_labels[:, i], probabilities[:, i])
+            fpr[i], tpr[i], _ = roc_curve(binarized_labels[:, i], binarized_pro[:, i])
             roc_auc[i] = 100 * auc(fpr[i], tpr[i])
 
         plt.figure()
