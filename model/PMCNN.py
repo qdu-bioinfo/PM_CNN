@@ -203,8 +203,6 @@ def main(args):
         probabilities = []
         true_labels = []
         with torch.no_grad():
-            acc = 0
-            total = 0
             y_pre = []
             y_label = []
             for i, data1 in enumerate(test_loader):
@@ -214,7 +212,6 @@ def main(args):
                 probabilities.append(outputs.numpy())
                 true_labels.append(label2.numpy())
                 pred = torch.max(outputs, dim=1)[1]
-                acc += torch.eq(pred, label2).sum().item()
                 y_pre.extend(pred.tolist())
                 y_label.extend(label2.tolist())
 
@@ -244,20 +241,18 @@ def main(args):
     def draw_ROC_curve(total_label, probabilities, true_labels):
         file_namelist = ['Control', 'Gingivitis', 'Periodontitis']
         plt.figure(figsize=(10, 7), dpi=1600)
-        num_classes = total_label
         binarized_labels = label_binarize(true_labels, classes=[0, 1, 2])
-        probabilities = label_binarize(probabilities, classes=[0, 1, 2])
         fpr = dict()
         tpr = dict()
         roc_auc = dict()
 
-        for i in range(num_classes):
+        for i in range(total_label):
             fpr[i], tpr[i], _ = roc_curve(binarized_labels[:, i], probabilities[:, i])
             roc_auc[i] = 100 * auc(fpr[i], tpr[i])
 
         plt.figure()
 
-        for i in range(num_classes):
+        for i in range(total_label):
             plt.plot(fpr[i], tpr[i], lw=1, alpha=0.7, label='%s    (AUC=%0.2f%%)' % (file_namelist[i], roc_auc[i]))
 
         plt.xlim([0.0, 1.0])
