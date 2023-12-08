@@ -16,9 +16,6 @@ from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_sc
 
 args = parse_arguments()
 label_num = 3
-# seed = 11
-# torch.manual_seed(seed)
-# np.random.seed(seed)
 
 
 def main(args):
@@ -26,8 +23,6 @@ def main(args):
     input_file_X_test = args.test_x
     input_file_Y_train = args.train_y
     input_file_Y_test = args.test_y
-    # input_file_X_verify = ""
-    # input_file_Y_verify = ""
     channels = args.channel
     ker_size = args.kernel_size
     strides = args.strides
@@ -48,10 +43,6 @@ def main(args):
     Y_train = pd.read_csv(input_file_Y_train)
     Y_train = Y_train.iloc[:, 1].values
 
-    # X_verify = pd.read_csv(input_file_X_verify)
-    # Y_verify = pd.read_csv(input_file_Y_verify)
-    # Y_verify = Y_verify.iloc[:, 1].values
-
     X_test = pd.read_csv(input_file_X_test)
     Y_test = pd.read_csv(input_file_Y_test)
     Y_test = Y_test.iloc[:, 1].values
@@ -60,8 +51,6 @@ def main(args):
 
     Y_train = encoder.fit_transform(Y_train.ravel())
     y_train = torch.LongTensor(Y_train)
-    # Y_verify = encoder.fit_transform(Y_verify.ravel())
-    # y_verify = torch.LongTensor(Y_verify)
     Y_test = encoder.fit_transform(Y_test.ravel())
     y_test = torch.LongTensor(Y_test)
 
@@ -70,27 +59,19 @@ def main(args):
     x3_train = X_train[My_list[2]]
     x4_train = X_train[My_list[3]]
 
-    # x1_verify = X_verify[My_list[0]]
-    # x2_verify = X_verify[My_list[1]]
-    # x3_verify = X_verify[My_list[2]]
-    # x4_verify = X_verify[My_list[3]]
-
     x1_test = X_test[My_list[0]]
     x2_test = X_test[My_list[1]]
     x3_test = X_test[My_list[2]]
     x4_test = X_test[My_list[3]]
 
     train_list = [x1_train, x2_train, x3_train, x4_train]
-    # verify_list = [x1_verify, x2_verify, x3_verify, x4_verify]
     test_list = [x1_test, x2_test, x3_test, x4_test]
 
     def arr_tensor():
         for i in range(len(train_list)):
             train_list[i] = np.array(train_list[i], dtype=np.float32)
-            # verify_list[i] = np.array(verify_list[i], dtype=np.float32)
             test_list[i] = np.array(test_list[i], dtype=np.float32)
             train_list[i] = torch.FloatTensor(train_list[i])
-            # verify_list[i] = torch.FloatTensor(verify_list[i])
             test_list[i] = torch.FloatTensor(test_list[i])
 
         return train_list, test_list
@@ -120,26 +101,30 @@ def main(args):
     test_dataset = MyDataset(x_test_list[0], x_test_list[1], x_test_list[2], x_test_list[3], y_test)
     test_loader = DataLoader(test_dataset, batch_size=477)
 
-    class Net(torch.nn.Module):
-        def __init__(self):
+    class Net(nn.Module):
+        def __init__(self, channels, ker_size, strides):
             super(Net, self).__init__()
             self.conv1_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
             self.conv1_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
                                      padding=1)
-
             self.conv2_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
             self.conv2_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
                                      padding=1)
-
             self.conv3_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
             self.conv3_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
                                      padding=1)
-
             self.conv4_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
             self.conv4_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
                                      padding=1)
             self.fc1 = nn.Linear(24576, 64)
             self.fc2 = nn.Linear(64, 3)
+
+        def conv_block(self, x, conv1, conv2):
+            x = F.tanh(conv1(x))
+            x = nn.BatchNorm1d(num_features=64)(x)
+            x = F.tanh(conv2(x))
+            x = nn.BatchNorm1d(num_features=64)(x)
+            return x
 
         def forward(self, x1, x2, x3, x4):
             x1 = x1.reshape(-1, 1, 1554)
@@ -147,25 +132,10 @@ def main(args):
             x3 = x3.reshape(-1, 1, 1554)
             x4 = x4.reshape(-1, 1, 1554)
 
-            x1 = F.tanh(self.conv1_1(x1))
-            x1 = nn.BatchNorm1d(num_features=64)(x1)
-            x1 = F.tanh(self.conv1_2(x1))
-            x1 = nn.BatchNorm1d(num_features=64)(x1)
-
-            x2 = F.tanh(self.conv2_1(x2))
-            x2 = nn.BatchNorm1d(num_features=64)(x2)
-            x2 = F.tanh(self.conv2_2(x2))
-            x2 = nn.BatchNorm1d(num_features=64)(x2)
-
-            x3 = F.tanh(self.conv3_1(x3))
-            x3 = nn.BatchNorm1d(num_features=64)(x3)
-            x3 = F.tanh(self.conv3_2(x3))
-            x3 = nn.BatchNorm1d(num_features=64)(x3)
-
-            x4 = F.tanh(self.conv4_1(x4))
-            x4 = nn.BatchNorm1d(num_features=64)(x4)
-            x4 = F.tanh(self.conv4_2(x4))
-            x4 = nn.BatchNorm1d(num_features=64)(x4)
+            x1 = self.conv_block(x1, self.conv1_1, self.conv1_2)
+            x2 = self.conv_block(x2, self.conv2_1, self.conv2_2)
+            x3 = self.conv_block(x3, self.conv3_1, self.conv3_2)
+            x4 = self.conv_block(x4, self.conv4_1, self.conv4_2)
 
             x1 = x1.view(x1.size(0), -1)
             x2 = x2.view(x2.size(0), -1)
@@ -179,7 +149,7 @@ def main(args):
 
             return x
 
-    model = Net()
+    model = Net(channels,ker_size,strides)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=5e-3)
     EPOCH = args.epoch
@@ -222,19 +192,14 @@ def main(args):
             kappa_score = cohen_kappa_score(y_label, y_pre)
             print("Kappa Score: {:.4f}".format(kappa_score))
 
-            f1 = f1_score(y_label, pred_classes, average='macro')
             accuracy = accuracy_score(y_label, pred_classes)
-            precision = precision_score(y_label, pred_classes, average='macro')
-            recall = recall_score(y_label, pred_classes, average='macro')
-            cm = confusion_matrix(y_label, pred_classes)
-            sensitivity = cm.diagonal() / cm.sum(axis=1)
-            sensitivity_avg = sensitivity.mean()
+            f1 = f1_score(y_label, pred_classes, average=None)
+            precision = precision_score(y_label, pred_classes, average=None)
+            recall = recall_score(y_label, pred_classes, average=None)
+            for i in range(len(precision)):
+                print(f"Class {i}: Precision={precision[i]}, Recall={recall[i]}, F1={f1[i]}")
 
-        print('F1 score:', f1)
         print('Accuracy:', accuracy)
-        print('Precision:', precision)
-        print('Recall:', recall)
-        print('Sensitivity:', sensitivity_avg)
 
         return probabilities, true_labels
 
@@ -262,6 +227,7 @@ def main(args):
         plt.title('Receiver Operating Characteristic')
         plt.legend(loc="lower right", prop={'size': 8})
         plt.savefig(res + 'result.png')
+        # plt.show()
 
     for epoch in range(EPOCH):
         PM_CNN_train()
