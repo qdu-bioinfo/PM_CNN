@@ -80,8 +80,8 @@ The evolutionary tree of the representative sequence is constructed by FastTree 
 ### Get representative sequence:
 
 ```
-usage: example/code/get_represent_seqs.py [--input, -i]//Input CSV file path
-										  [--output, -o]//Output TXT file path
+usage: model/PMCNN.py[--input] [-i] //Input CSV file path
+                                        [--output] [-o] //Output TXT file path
 ```
 
 ```
