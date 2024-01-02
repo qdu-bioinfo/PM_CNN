@@ -81,7 +81,7 @@ The evolutionary tree of the representative sequence is constructed by FastTree 
 
 ```
 usage: model/PMCNN.py[--input] [-i] //Input CSV file path
-                                        [--output] [-o] //Output TXT file path
+                     [--output] [-o] //Output TXT file path
 ```
 
 ```
