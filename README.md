@@ -7,6 +7,7 @@
 * Installation
 * Step 1:Data preprocess
 * Step 2:Build a phylogenetic tree(optional)
+* Step 3:Get correlation matrix
 * Model training and prediction
 * Contact
   
@@ -75,7 +76,7 @@ python example/code/delete_feature.py
 
 ## Step 2:Build a phylogenetic tree(optional)
 
-The evolutionary tree of the representative sequence is constructed by FastTree and Mafft, and the distance matrix is obtained by using the cophenetic function in the R package ape. The related software can be downloaded to the official website, or please contact my e-mail. The commands involved are as follows:
+This step is optional, the phylogeny tree can either be constructed from representative sequences (e.g. marker gene or amplicon), or provided by users from a NEWICK format file (e.g. for shotgun). The evolutionary tree of the representative sequence is constructed by FastTree and Mafft. The related software can be downloaded to the official website, or please contact my e-mail. The commands involved are as follows:
 
 ### Get representative sequence:
 
@@ -83,6 +84,8 @@ The evolutionary tree of the representative sequence is constructed by FastTree 
 usage: example/code/get_represent_seqs.py [--input] [-i] //Input CSV file path
                                           [--output] [-o] //Output TXT file path
 ```
+
+#### Example running:
 
 ```
 python get_represent_seqs.py --input ../data/del_ex_Abundance_table.csv --output ../data/ex_represent.txt  // you need to download GreenGenes database
@@ -92,16 +95,27 @@ python get_represent_seqs.py --input ../data/del_ex_Abundance_table.csv --output
 ### Mafft(Multiple sequence alignment):
 
 ```
-mafft --auto example/data/ex_respresent.txt > example/data/output.fasta
+mafft --auto example/data/ex_respresent.txt > example/data/output.fasta // you need to download Mafft
 ```
 
 ### FastTree(Construct a phylogenetic tree):
 
 ```
-FastTree -nt -gtr example/data/output.fasta > example/data/ex.tree
+FastTree -nt -gtr example/data/output.fasta > example/data/ex.tree  // you need to download FastTree
 ```
 
-### R script(Get distance matrix):
+## Step 3:Get correlation matrix
+
+The Cophenetice distance matrix is obtained by using the cophenetic function in the R package ape. The related software can be downloaded to the official website, or please contact my e-mail.
+
+### R script(Get cophenetic distance matrix):
+
+```
+usage: example/code/get_represent_seqs.py [--input] [-i] //Input tree file
+                                          [--output] [-o] //Output distance matrix file
+```
+
+#### Example running:
 
 ```
 Rscript get_dis_matrix.R --input example/data/ex.tree --output example/data/ex_distance_matrix.csv
