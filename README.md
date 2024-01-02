@@ -80,26 +80,31 @@ The evolutionary tree of the representative sequence is constructed by FastTree 
 ### Get representative sequence:
 
 ```
-python script.py --input ../data/del_ex_Abundance_table.csv --output ../data/ex_represent.txt  // you need to download GreenGenes database
+usage: example/code/get_represent_seqs.py [--input, -i]//Input CSV file path
+										  [--output, -o]//Output TXT file path
+```
+
+```
+python get_represent_seqs.py --input ../data/del_ex_Abundance_table.csv --output ../data/ex_represent.txt  // you need to download GreenGenes database
 ```
 
 
 ### Mafft(Multiple sequence alignment):
 
 ```
-mafft --auto example/data/ex_respresent.txt > output.fasta
+mafft --auto example/data/ex_respresent.txt > example/data/output.fasta
 ```
 
 ### FastTree(Construct a phylogenetic tree):
 
 ```
-FastTree -nt -gtr  example/data/output.fasta > ex.tree
+FastTree -nt -gtr example/data/output.fasta > example/data/ex.tree
 ```
 
 ### R script(Get distance matrix):
 
 ```
-Rscript example/code/get_dis_matrix.R
+Rscript get_dis_matrix.R --input example/data/ex.tree --output example/data/ex_distance_matrix.csv
 ```
 
 After obtaining the distance matrix, we aim to obtain the phylogenetic correlation between OTU. Therefore, the next step is to transform the distance matrix into the correlation matrix by the designed distance transformation formula, and then carry out hierarchical clustering based on the correlation matrix, and finally get the result of multi-layer clustering.
