@@ -6,6 +6,7 @@
 * Package requirement
 * Installation
 * Step 1:Data preprocess
+* Step 2:Build a phylogenetic tree(optional)
 * Model training and prediction
 * Contact
   
@@ -72,13 +73,16 @@ python example/code/preprocess.py
 python example/code/delete_feature.py
 ```
 
+## Step 2:Build a phylogenetic tree(optional)
+
+The evolutionary tree of the representative sequence is constructed by FastTree and Mafft, and the distance matrix is obtained by using the cophenetic function in the R package ape. The related software can be downloaded to the official website, or please contact my e-mail. The commands involved are as follows:
+
 ### Get representative sequence:
 
 ```
-python example/code/get_represent_seqs.py  // you need to download GreenGenes database
+python script.py --input ../data/del_ex_Abundance_table.csv --output ../data/ex_represent.txt  // you need to download GreenGenes database
 ```
 
-The evolutionary tree of the representative sequence is constructed by FastTree and Mafft, and the distance matrix is obtained by using the cophenetic function in the R package ape. The related software can be downloaded to the official website, or please contact my e-mail. The commands involved are as follows:
 
 ### Mafft(Multiple sequence alignment):
 
