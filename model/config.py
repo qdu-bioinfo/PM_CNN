@@ -16,6 +16,8 @@ def parse_arguments():
 
     parser.add_argument('--test_y', type=str, default='../data/Oral/test_data/y_test_1554.csv')
 
+    parser.add_argument('--save_model', type=str, default='./PM-CNN_model.pth')
+
     parser.add_argument('--sequence', type=str, default='../data/Oral/Oral_feature.csv')
 
     parser.add_argument('--res', type=str, default='../result/')

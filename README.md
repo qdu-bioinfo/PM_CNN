@@ -5,7 +5,7 @@
 * Introduction
 * Package requirement
 * Installation
-* Step 1:Data preprocess
+* Step 1:Data preprocess(optional)
 * Step 2:Build a phylogenetic tree(optional)
 * Step 3:Get correlation matrix
 * Step 4:Distance transformation and hierarchical clustering
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 
 ## Step 1:Data preprocess
 
-First, we need to preprocess the data to obtain our sample abundance information from the original data. Here, we take the data in the example file as an example to demonstrate. If you want to run PM-CNN quickly, you can jump directly to the Model training and prediction section and run the relevant commands.
+First, we need to preprocess the data to obtain our sample abundance information from the original data. If you already have the OTU abundance table of all samples, you can skip this step. If you want to run PM-CNN quickly, you can jump directly to the Model training and prediction section and run the relevant commands.
 
 table1:
 | OTU_id | Count | Abundance |
@@ -54,12 +54,6 @@ table2:
 | 0      | 4     | 0.02      |
 | 1      | 2     | 0.001     |
 
-### Merge all tables:
-
-```
-python example/code/preprocess.py
-```
-
 ### Merged abundance table:
 
 | OTU1  | OTU2 | OTU3  | OTU4  | label |
@@ -69,11 +63,6 @@ python example/code/preprocess.py
 | 0.002 | 0    | 0.004 | 0     | 3     |
 | 0     | 0.02 | 0     | 0.003 | 2     |
 
-### Remove features with a 0 value ratio greater than 90%:
-
-```
-python example/code/delete_feature.py
-```
 
 ## Step 2:Build a phylogenetic tree(optional)
 
@@ -148,10 +137,9 @@ Now, we have the training data and test data needed by the model. Next, we will 
 #### You can see the parameters of PM-CNN through the comment information:
 
 ```
-usage: model/PMCNN.py [--train] //train PM-CNN
-					  [--test] //test PM-CNN
+usage: model/PMCNN.py [--train] //train PM-CNN model [--test] //test PM-CNN model
                                         [--train_x] [--train_y] //training set directory
-                                        [--test_x] [--test_y] //test set directory.
+                                        [--test_x] [--test_y] //testing set directory.
                                         [--sequence] //clustering results
                                         [--res] //ROC curve for each label
                                         [--batch_size] //batch_size
@@ -161,7 +149,7 @@ usage: model/PMCNN.py [--train] //train PM-CNN
                                         [--strides] //strides size
 ```
 
-### Example
+#### Example running:
 
 The human oral microbiome data contains 1587 samples with 1554 OTUs. See our paper for description details. Also, in order for you to run our program quickly, we integrated the training and testing parts of the model. The output results can be viewed in the console, or please move to the result folder, we have saved 10 running results in advance for your quick viewing.
 
@@ -169,8 +157,16 @@ The human oral microbiome data contains 1587 samples with 1554 OTUs. See our pap
 cd PM_CNN/model
 ```
 
+#### train PM-CNN:
+
 ```
-python PMCNN.py --train_x ../data/Oral/train_data/X_train_1554.csv --train_y ../data/Oral/train_data/y_train_1554.csv --test_x ../data/Oral/test_data/X_test_1554.csv --test_y ../data/Oral/test_data/y_test_1554.csv --sequence ../data/Oral/Oral_feature.csv --batch_size 32 --epoch 35 --learning_rate 5e-3 --channel 64 --kernel_size 8 --strides 4 --res ../result/
+ 
+```
+
+#### test PM-CNN:
+
+```
+python PMCNN.py --test --train_x --test_x ../data/Oral/test_data/X_test_1554.csv --test_y ../data/Oral/test_data/y_test_1554.csv --sequence ../data/Oral/Oral_feature.csv --batch_size 32 --epoch 35 --learning_rate 5e-3 --channel 64 --kernel_size 8 --strides 4 --res ../result/
 ```
 
 ## Contact

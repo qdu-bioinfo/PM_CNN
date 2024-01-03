@@ -166,11 +166,11 @@ def main(args):
                 if (i + 1) % 10 == 0:
                     print('Epoch [{}/{}]-----------------------Loss: {:.4f}'
                           .format(epoch + 1, EPOCH, loss.item()))
-        torch.save(model.state_dict(), "./PM_CNN_model.pth")
+        torch.save(model.state_dict(), args.save_model)
 
     def PM_CNN_test():
         model = Net()
-        model.load_state_dict(torch.load("./PM_CNN_model.pth"))
+        model.load_state_dict(torch.load(args.save_model))
         probabilities = []
         true_labels = []
         with torch.no_grad():
