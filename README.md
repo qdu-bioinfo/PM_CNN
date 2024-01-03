@@ -9,7 +9,7 @@
 * Step 2:Build a phylogenetic tree(optional)
 * Step 3:Get correlation matrix
 * Step 4:Distance transformation and hierarchical clustering
-* Step 5:Model training and prediction
+* Step 5:Model training and testing
 * Contact
   
   ## Introduction
