@@ -3,13 +3,23 @@
 ## Contents
 
 * Introduction
+
 * Package requirement
+
 * Installation
-* Step 1:Data preprocess(optional)
-* Step 2:Build a phylogenetic tree(optional)
-* Step 3:Get correlation matrix
-* Step 4:Distance transformation and hierarchical clustering
-* Step 5:Model training and testing
+
+* Program running process:
+
+   * Step 1:Data preprocess(optional)
+
+   * Step 2:Build a phylogenetic tree(optional)
+
+   * Step 3:Get correlation matrix
+
+   * Step 4:Distance transformation and hierarchical clustering
+
+   * Step 5:Model training and testing
+
 * Contact
   
   ## Introduction
@@ -17,11 +27,17 @@
   In this study, we proposed a new deep learning framework PM-CNN (Phylogenetic Multi-path Convolutional Neural Network), which combines convolutional neural networks and microbial phylogenetic structures to predict various human diseases.
   
   ## Package requirement
+
 * torch >= 1.11.0
+
 * R >= 4.2.1
+
 * numpy >= 1.22.3
+
 * scipy >= 1.8.1
+
 * scikit-learn >= 1.1.1
+
 * matplotlib >= 3.5.1
 
 ### Download PM-CNN:
@@ -38,7 +54,9 @@ git clone https://github.com/qdu-bioinfo/PM_CNN
 pip install -r requirements.txt
 ```
 
-## Step 1:Data preprocess
+## Program running process:
+
+### Step 1:Data preprocess
 
 First, we need to preprocess the data to obtain our sample abundance information from the original data. If you already have the OTU abundance table of all samples, you can skip this step. If you want to run PM-CNN quickly, you can jump directly to the Model training and prediction section and run the relevant commands.
 
@@ -54,7 +72,7 @@ table2:
 | 0      | 4     | 0.02      |
 | 1      | 2     | 0.001     |
 
-### Merged abundance table:
+Merged abundance table:
 
 | OTU1  | OTU2 | OTU3  | OTU4  | label |
 | ----- | ---- | ----- | ----- | ----- |
@@ -63,12 +81,11 @@ table2:
 | 0.002 | 0    | 0.004 | 0     | 3     |
 | 0     | 0.02 | 0     | 0.003 | 2     |
 
-
-## Step 2:Build a phylogenetic tree(optional)
+### Step 2:Build a phylogenetic tree(optional)
 
 This step is optional, the phylogeny tree can either be constructed from representative sequences (e.g. marker gene or amplicon), or provided by users from a NEWICK format file (e.g. for shotgun). The evolutionary tree of the representative sequence is constructed by FastTree and Mafft. The related software can be downloaded to the official website, or please contact my e-mail. The commands involved are as follows:
 
-### Get representative sequence:
+Get representative sequence:
 
 ```
 usage: example/code/get_represent_seqs.py [--input] [-i] //Input CSV file path
@@ -81,24 +98,23 @@ usage: example/code/get_represent_seqs.py [--input] [-i] //Input CSV file path
 python get_represent_seqs.py --input ../data/del_ex_Abundance_table.csv --output ../data/ex_represent.txt  // you need to download GreenGenes database
 ```
 
-
-### Mafft(Multiple sequence alignment):
+Mafft(Multiple sequence alignment):
 
 ```
 mafft --auto example/data/ex_respresent.txt > example/data/output.fasta // you need to download Mafft
 ```
 
-### FastTree(Construct a phylogenetic tree):
+FastTree(Construct a phylogenetic tree):
 
 ```
 FastTree -nt -gtr example/data/output.fasta > example/data/ex.tree  // you need to download FastTree
 ```
 
-## Step 3:Get correlation matrix
+### Step 3:Get correlation matrix
 
 The Cophenetice distance matrix is obtained by using the cophenetic function in the R package ape. The related software can be downloaded to the official website, or please contact my e-mail.
 
-### R script(Get cophenetic distance matrix):
+R script(Get cophenetic distance matrix):
 
 ```
 usage: example/code/get_represent_seqs.py [--input] [-i] //Input tree file
@@ -113,7 +129,7 @@ Rscript get_dis_matrix.R --input example/data/ex.tree --output example/data/ex_d
 
 After obtaining the distance matrix, we aim to obtain the phylogenetic correlation between OTU. Therefore, the next step is to transform the distance matrix into the correlation matrix by the designed distance transformation formula, and then carry out hierarchical clustering based on the correlation matrix, and finally get the result of multi-layer clustering.
 
-## Step 4:Distance transformation and hierarchical clustering
+### Step 4:Distance transformation and hierarchical clustering
 
 ```
 usage: example/code/get_represent_seqs.py [--input] [-i] //Input original distance matrix csv file
@@ -157,16 +173,16 @@ The human oral microbiome data contains 1587 samples with 1554 OTUs. See our pap
 cd PM_CNN/model
 ```
 
-#### train PM-CNN:
+#### Training PM-CNN:
 
 ```
- 
+python PMCNN.py --train --train_x ../data/Oral/train_data/X_train_1554.csv --train_y ../data/Oral/train_data/y_train_1554.csv --sequence ../data/Oral/Oral_feature.csv --batch_size 32 --epoch 35 --learning_rate 5e-3 --channel 64 --kernel_size 8 --strides 4 --res ../result/
 ```
 
-#### test PM-CNN:
+#### Testing PM-CNN:
 
 ```
-python PMCNN.py --test --train_x --test_x ../data/Oral/test_data/X_test_1554.csv --test_y ../data/Oral/test_data/y_test_1554.csv --sequence ../data/Oral/Oral_feature.csv --batch_size 32 --epoch 35 --learning_rate 5e-3 --channel 64 --kernel_size 8 --strides 4 --res ../result/
+python PMCNN.py --test --test_x ../data/Oral/test_data/X_test_1554.csv --test_y ../data/Oral/test_data/y_test_1554.csv --sequence ../data/Oral/Oral_feature.csv --batch_size 32 --epoch 35 --learning_rate 5e-3 --channel 64 --kernel_size 8 --strides 4 --res ../result/
 ```
 
 ## Contact
