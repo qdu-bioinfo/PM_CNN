@@ -102,7 +102,7 @@ def main(args):
     test_loader = DataLoader(test_dataset, batch_size=477)
 
     class Net(nn.Module):
-        def __init__(self, channels, ker_size, strides):
+        def __init__(self):
             super(Net, self).__init__()
             self.conv1_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
             self.conv1_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
@@ -149,27 +149,28 @@ def main(args):
 
             return x
 
-    model = Net(channels,ker_size,strides)
-    criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=5e-3)
-    EPOCH = args.epoch
-
     def PM_CNN_train():
-        model.train()
-        for i, data in enumerate(train_loader):
-            inputs, labels = data
-            x_train1, x_train2, x_train3, x_train4 = inputs
-            y_pred = model(x_train1, x_train2, x_train3, x_train4)
-            loss = criterion(y_pred, labels)
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
-            if (i + 1) % 10 == 0:
-                print('Epoch [{}/{}]-----------------------Loss: {:.4f}'
-                      .format(epoch + 1, EPOCH, loss.item()))
+        model = Net()
+        criterion = nn.CrossEntropyLoss()
+        optimizer = optim.Adam(model.parameters(), lr=5e-3)
+        EPOCH = args.epoch
+        for epoch in range(EPOCH):
+            for i, data in enumerate(train_loader):
+                inputs, labels = data
+                x_train1, x_train2, x_train3, x_train4 = inputs
+                y_pred = model(x_train1, x_train2, x_train3, x_train4)
+                loss = criterion(y_pred, labels)
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+                if (i + 1) % 10 == 0:
+                    print('Epoch [{}/{}]-----------------------Loss: {:.4f}'
+                          .format(epoch + 1, EPOCH, loss.item()))
+        torch.save(model.state_dict(), "./PM_CNN_model.pth")
 
     def PM_CNN_test():
-        model.eval()
+        model = Net()
+        model.load_state_dict(torch.load("./PM_CNN_model.pth"))
         probabilities = []
         true_labels = []
         with torch.no_grad():
@@ -229,10 +230,11 @@ def main(args):
         plt.savefig(res + 'result.png')
         # plt.show()
 
-    for epoch in range(EPOCH):
+    if args.train:
         PM_CNN_train()
-    proba, tru_label = PM_CNN_test()
-    draw_ROC_curve(label_num, proba, tru_label)
+    elif args.test:
+        proba, tru_label = PM_CNN_test()
+        draw_ROC_curve(label_num, proba, tru_label)
 
 
 if __name__ == '__main__':

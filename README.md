@@ -8,7 +8,8 @@
 * Step 1:Data preprocess
 * Step 2:Build a phylogenetic tree(optional)
 * Step 3:Get correlation matrix
-* Model training and prediction
+* Step 4:Distance transformation and hierarchical clustering
+* Step 5:Model training and prediction
 * Contact
   
   ## Introduction
@@ -123,20 +124,19 @@ Rscript get_dis_matrix.R --input example/data/ex.tree --output example/data/ex_d
 
 After obtaining the distance matrix, we aim to obtain the phylogenetic correlation between OTU. Therefore, the next step is to transform the distance matrix into the correlation matrix by the designed distance transformation formula, and then carry out hierarchical clustering based on the correlation matrix, and finally get the result of multi-layer clustering.
 
-### Distance transformation and hierarchical clustering:
+## Step 4:Distance transformation and hierarchical clustering
 
 ```
-python model/clustering.py
+usage: example/code/get_represent_seqs.py [--input] [-i] //Input original distance matrix csv file
+                                          [--tran] [-o] //Get distance converted csv file
+                                          [--npy] [-n] //Convert the converted matrix csv to npy format
+                                          [--output] [-o] //Hierarchical clustering result path
 ```
 
-### Example diagram of clustering results:
-
-![](https://markdown.liuchengtu.com/work/uploads/upload_96c134c0081ccd7afdc99e52cc4b49b5.jpg)
-
-### Get the result of multi-layer clustering:
+#### Example running:
 
 ```
-python model/get_features.py
+python model/clustering.py --input ../data/Oral/oral_1554.csv --tran ../data/Oral/oral_1554_tran.csv --npy ../data/Oral/oral_1554_tran.npy --output ../data/Oral/Oral_feature.csv
 ```
 
 ## Model training and prediction
@@ -148,10 +148,12 @@ Now, we have the training data and test data needed by the model. Next, we will 
 #### You can see the parameters of PM-CNN through the comment information:
 
 ```
-usage: model/PMCNN.py[--train_x] [--train_y] //training set directory
+usage: model/PMCNN.py [--train] //train PM-CNN
+					  [--test] //test PM-CNN
+                                        [--train_x] [--train_y] //training set directory
                                         [--test_x] [--test_y] //test set directory.
                                         [--sequence] //clustering results
-                    [--res] //ROC curve for each label
+                                        [--res] //ROC curve for each label
                                         [--batch_size] //batch_size
                                         [--learning_rate] //learning rate
                                         [--channel] //number of input and output channels

@@ -4,6 +4,10 @@ import argparse
 def parse_arguments():
     parser = argparse.ArgumentParser(description='PM_CNN')
 
+    parser.add_argument("--train", action="store_true")
+
+    parser.add_argument("--test", action="store_true")
+
     parser.add_argument('--train_x', type=str, default='../data/Oral/train_data/X_train_1554.csv')
 
     parser.add_argument('--train_y', type=str, default='../data/Oral/train_data/y_train_1554.csv')
