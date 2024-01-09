@@ -82,7 +82,7 @@ In this step, the sample abundance table needs to be obtained based on the abund
 
 ```
 preprocess/preprocess.py [--input] [-i] //Input the storage path of all samples
-                 [--meta] [-m] //Meta information of all samples
+                    [--meta] [-m] //Meta information of all samples
                          [--output] [-o] //Output the merged sample abundance table
 ```
 
