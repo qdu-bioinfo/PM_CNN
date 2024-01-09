@@ -9,36 +9,31 @@
 * Installation
 
 * Program running process:
-
-   * Step 1:Data preprocess(optional)
-
-   * Step 2:Build a phylogenetic tree(optional)
-
-   * Step 3:Get correlation matrix
-
-   * Step 4:Distance transformation and hierarchical clustering
-
-   * Step 5:Model training and testing
+  
+  * Step 1:Data preprocess(optional)
+  
+  * Step 2:Build a phylogenetic tree(optional)
+  
+  * Step 3:Get correlation matrix
+  
+  * Step 4:Distance transformation and hierarchical clustering
+  
+  * Step 5:Model training and testing
 
 * Contact
-  
-  ## Introduction
+
+## Introduction
   
   In this study, we proposed a new deep learning framework PM-CNN (Phylogenetic Multi-path Convolutional Neural Network), which combines convolutional neural networks and microbial phylogenetic structures to predict various human diseases.
   
-  ## Package requirement
+## Package requirement
 
-* torch >= 1.11.0
-
-* R >= 4.2.1
-
-* numpy >= 1.22.3
-
-* scipy >= 1.8.1
-
-* scikit-learn >= 1.1.1
-
-* matplotlib >= 3.5.1
+    * torch >= 1.11.0
+    * R >= 4.2.1
+    * numpy >= 1.22.3
+    * scipy >= 1.8.1
+    * scikit-learn >= 1.1.1
+    * matplotlib >= 3.5.1
 
 ### Download PM-CNN:
 
@@ -58,28 +53,41 @@ pip install -r requirements.txt
 
 ### Step 1:Data preprocess
 
-First, we need to preprocess the data to obtain our sample abundance information from the original data. If you already have the OTU abundance table of all samples, you can skip this step. If you want to run PM-CNN quickly, you can jump directly to the Model training and prediction section and run the relevant commands.
+In this step, the sample abundance table needs to be obtained based on the abundance information of each sample and related meta information. We provide additional programs to support this input type. If you want to run PM-CNN on any other data set, you only need to modify the relevant path information according to the usage requirements below. If you already have the OTU abundance table of all samples, you can skip this step. If you want to run PM-CNN quickly, you can jump directly to the "Model training and testing" section and run the relevant commands.
 
-table1:
+#### Input:
+
+Sample1:
 | OTU_id | Count | Abundance |
 | ------ | ----- | --------- |
-| 0      | 5     | 0.03      | 
+|0       | 5     | 0.03      | 
 | 1      | 10    | 0.1       |
 
-table2:
+Sample2:
 | OTU_id | Count | Abundance |
 | ------ | ----- | --------- |
 | 0      | 4     | 0.02      |
 | 1      | 2     | 0.001     |
 
-Merged abundance table:
+Meta information:
+| SampleID | Status |Projet|
+| ------ | ----- | ----- |
+| sample1  | Healthy  | project1 |
+| sample2  | Gingivitis  | project2 |
 
-| OTU1  | OTU2 | OTU3  | OTU4  | label |
-| ----- | ---- | ----- | ----- | ----- |
-| 0.03  | 0    | 0.001 | 0.001 | 1     |
-| 0     | 0.01 | 0.1   | 0     | 2     |
-| 0.002 | 0    | 0.004 | 0     | 3     |
-| 0     | 0.02 | 0     | 0.003 | 2     |
+#### Usage:
+
+```
+preprocess/preprocess.py [--input] [-i] //Input the storage path of all samples
+										  [--meta] [-m] //Meta information of all samples
+                                          [--output] [-o] //Output the merged sample abundance table
+```
+
+#### Example running:
+
+```
+python preprocess.py --input ../data/Gut/Raw_data --meta ../data/Gut/Gut_3113_meta.csv --output ../data/Gut_Abundance_table.xlsx
+```
 
 ### Step 2:Build a phylogenetic tree(optional)
 
@@ -159,15 +167,20 @@ usage: model/PMCNN.py [--train] //train PM-CNN model [--test] //test PM-CNN mode
                                         [--sequence] //clustering results
                                         [--res] //ROC curve for each label
                                         [--batch_size] //batch_size
+                                        [--batch_norm] //batch normalization
+                                        [--test_num] //number of test sets
+                                        [--label_sum] //total number of labels
+                                        [--feature_sum] //total number of features
+                                        [--shape] //total number of neurons after channel merging
                                         [--learning_rate] //learning rate
                                         [--channel] //number of input and output channels
                                         [--kernel_size] //Convolution kernel size
                                         [--strides] //strides size
 ```
 
-#### Example running:
+#### Example running(Dataset 1):
 
-The human oral microbiome data contains 1587 samples with 1554 OTUs. See our paper for description details. Also, in order for you to run our program quickly, we integrated the training and testing parts of the model. The output results can be viewed in the console, or please move to the result folder, we have saved 10 running results in advance for your quick viewing.
+The human oral microbiome data contains 1587 samples with 1554 OTUs. Contains three states: health, periodontitis, and gingivitis, and labels them with 0, 1, and 2 respectively. Divide 70% of the samples into the training set and 30% of the samples into the test set. See our paper for description details. Also, in order for you to run our program quickly, we integrated the training and testing parts of the model. The output results can be viewed in the console, or please move to the result folder, we have saved 10 running results in advance for your quick viewing.
 
 ```
 cd PM_CNN/model
@@ -176,13 +189,29 @@ cd PM_CNN/model
 #### Training PM-CNN:
 
 ```
-python PMCNN.py --train --train_x ../data/Oral/train_data/X_train_1554.csv --train_y ../data/Oral/train_data/y_train_1554.csv --sequence ../data/Oral/Oral_feature.csv --batch_size 32 --epoch 35 --learning_rate 5e-3 --channel 64 --kernel_size 8 --strides 4 --res ../result/
+python PMCNN.py --train --train_x ../data/Oral/train_data/X_train_1554.csv --train_y ../data/Oral/train_data/y_train_1554.csv --sequence ../data/Oral/Oral_feature.csv --save_model ../data/Oral/PM-CNN_model.pth --batch_norm 64 --label_sum 3 --feature_sum 1554 --shape 24576 --batch_size 32 --epoch 35 --learning_rate 5e-3 --channel 64 --kernel_size 8 --strides 4 --res ../result/
 ```
 
 #### Testing PM-CNN:
 
 ```
-python PMCNN.py --test --test_x ../data/Oral/test_data/X_test_1554.csv --test_y ../data/Oral/test_data/y_test_1554.csv --sequence ../data/Oral/Oral_feature.csv --batch_size 32 --epoch 35 --learning_rate 5e-3 --channel 64 --kernel_size 8 --strides 4 --res ../result/
+python PMCNN.py --test --test_x ../data/Oral/test_data/X_test_1554.csv --test_y ../data/Oral/test_data/y_test_1554.csv --test_num 477 --label_sum 3 --res ../result/
+```
+
+#### Example running(Dataset 2):
+
+The human gut microbiome data contains 3113 samples with 5597 OTUs. Contains five statuses: health, IBD, HIV, EDD, and CRC, and labels them with 0, 1, 2, 3, and 4 respectively. Divide 70% of the samples into the training set and 30% of the samples into the test set. See our paper for description details. Also, in order for you to run our program quickly, we integrated the training and testing parts of the model. The output results can be viewed in the console, or please move to the result folder, we have saved 10 running results in advance for your quick viewing.
+
+#### Training PM-CNN:
+
+```
+python PMCNN.py --train --train_x ../data/Gut/train_data/X_train_5597.csv --train_y ../data/Gut/train_data/y_train_5597.csv --sequence ../data/Gut/Gut_feature.csv --save_model ../data/Gut/PM-CNN_model.pth --batch_norm 64 --label_sum 5 --shape 22336 --feature_sum 5597 --batch_size 64 --epoch 45 --learning_rate 5e-3 --channel 16 --kernel_size 8 --strides 4
+```
+
+#### Testing PM-CNN:
+
+```
+python PMCNN.py --test --test_x ../data/Gut/test_data/X_test_5597.csv --test_y ../data/Gut/test_data/y_test_5597.csv --test_num 934 --save_model ../data/Gut/PM-CNN_model.pth --res ../result/
 ```
 
 ## Contact

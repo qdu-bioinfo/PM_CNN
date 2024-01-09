@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 import torch.nn.functional as F
 from config import parse_arguments
 from sklearn.metrics import roc_curve, auc
-from scipy.ndimage import gaussian_filter1d
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import cohen_kappa_score
 from torch.utils.data import DataLoader, Dataset
@@ -15,7 +14,7 @@ from sklearn.preprocessing import label_binarize
 from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_score, confusion_matrix
 
 args = parse_arguments()
-label_num = 3
+label_num = args.label_sum
 
 
 def main(args):
@@ -39,43 +38,6 @@ def main(args):
 
     My_list = int_str()
 
-    X_train = pd.read_csv(input_file_X_train)
-    Y_train = pd.read_csv(input_file_Y_train)
-    Y_train = Y_train.iloc[:, 1].values
-
-    X_test = pd.read_csv(input_file_X_test)
-    Y_test = pd.read_csv(input_file_Y_test)
-    Y_test = Y_test.iloc[:, 1].values
-
-    encoder = LabelEncoder()
-
-    Y_train = encoder.fit_transform(Y_train.ravel())
-    y_train = torch.LongTensor(Y_train)
-    Y_test = encoder.fit_transform(Y_test.ravel())
-    y_test = torch.LongTensor(Y_test)
-
-    x1_train = X_train[My_list[0]]
-    x2_train = X_train[My_list[1]]
-    x3_train = X_train[My_list[2]]
-    x4_train = X_train[My_list[3]]
-
-    x1_test = X_test[My_list[0]]
-    x2_test = X_test[My_list[1]]
-    x3_test = X_test[My_list[2]]
-    x4_test = X_test[My_list[3]]
-
-    train_list = [x1_train, x2_train, x3_train, x4_train]
-    test_list = [x1_test, x2_test, x3_test, x4_test]
-
-    def arr_tensor():
-        for i in range(len(train_list)):
-            train_list[i] = np.array(train_list[i], dtype=np.float32)
-            test_list[i] = np.array(test_list[i], dtype=np.float32)
-            train_list[i] = torch.FloatTensor(train_list[i])
-            test_list[i] = torch.FloatTensor(test_list[i])
-
-        return train_list, test_list
-
     print("Let's start training the model!\n\n\n\n")
     print("Loading......\n\n")
 
@@ -93,13 +55,7 @@ def main(args):
         def __getitem__(self, index):
             return (self.x1[index], self.x2[index], self.x3[index], self.x4[index]), self.y[index]
 
-    x_train_list, x_test_list = arr_tensor()
-
-    train_dataset = MyDataset(x_train_list[0], x_train_list[1], x_train_list[2], x_train_list[3], y_train)
-    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
-
-    test_dataset = MyDataset(x_test_list[0], x_test_list[1], x_test_list[2], x_test_list[3], y_test)
-    test_loader = DataLoader(test_dataset, batch_size=477)
+    # x_train_list, x_test_list = arr_tensor()
 
     class Net(nn.Module):
         def __init__(self):
@@ -116,21 +72,21 @@ def main(args):
             self.conv4_1 = nn.Conv1d(1, out_channels=channels, kernel_size=ker_size, stride=strides, padding=1)
             self.conv4_2 = nn.Conv1d(in_channels=channels, out_channels=channels, kernel_size=ker_size, stride=strides,
                                      padding=1)
-            self.fc1 = nn.Linear(24576, 64)
-            self.fc2 = nn.Linear(64, 3)
+            self.fc1 = nn.Linear(args.shape, args.batch_norm)
+            self.fc2 = nn.Linear(args.batch_norm, label_num)
 
         def conv_block(self, x, conv1, conv2):
             x = F.tanh(conv1(x))
-            x = nn.BatchNorm1d(num_features=64)(x)
+            x = nn.BatchNorm1d(num_features=args.channel)(x)
             x = F.tanh(conv2(x))
-            x = nn.BatchNorm1d(num_features=64)(x)
+            x = nn.BatchNorm1d(num_features=args.channel)(x)
             return x
 
         def forward(self, x1, x2, x3, x4):
-            x1 = x1.reshape(-1, 1, 1554)
-            x2 = x2.reshape(-1, 1, 1554)
-            x3 = x3.reshape(-1, 1, 1554)
-            x4 = x4.reshape(-1, 1, 1554)
+            x1 = x1.reshape(-1, 1, args.feature_sum)
+            x2 = x2.reshape(-1, 1, args.feature_sum)
+            x3 = x3.reshape(-1, 1, args.feature_sum)
+            x4 = x4.reshape(-1, 1, args.feature_sum)
 
             x1 = self.conv_block(x1, self.conv1_1, self.conv1_2)
             x2 = self.conv_block(x2, self.conv2_1, self.conv2_2)
@@ -143,9 +99,15 @@ def main(args):
             x4 = x4.view(x4.size(0), -1)
             x = torch.cat((x1, x2, x3, x4), dim=1)
             x = self.fc1(x)
-            x = nn.BatchNorm1d(num_features=64)(x)
+            x = nn.BatchNorm1d(num_features=args.batch_norm)(x)
             x = F.tanh(x)
-            x = F.softmax(self.fc2(x))
+
+            if label_num == 3:
+                x = F.softmax(self.fc2(x))
+            elif label_num == 5:
+                x = self.fc2(x)
+            else:
+                x = F.softmax(self.fc2(x))
 
             return x
 
@@ -205,9 +167,17 @@ def main(args):
         return probabilities, true_labels
 
     def draw_ROC_curve(total_label, probabilities, true_labels):
-        file_namelist = ['Control', 'Gingivitis', 'Periodontitis']
+
+        if total_label == 3:
+            file_namelist = ['Control', 'Gingivitis', 'Periodontitis']
+            binarized_labels = label_binarize(true_labels, classes=[0, 1, 2])
+        elif total_label == 5:
+            file_namelist = ['Control', 'IBD', 'HIV', 'EDD', 'CRC']
+            binarized_labels = label_binarize(true_labels, classes=[0, 1, 2, 3, 4])
+        else:
+            print("Please add label information")
+
         plt.figure(figsize=(10, 7), dpi=1600)
-        binarized_labels = label_binarize(true_labels, classes=[0, 1, 2])
         fpr = dict()
         tpr = dict()
         roc_auc = dict()
@@ -227,12 +197,65 @@ def main(args):
         plt.ylabel('True Positive Rate')
         plt.title('Receiver Operating Characteristic')
         plt.legend(loc="lower right", prop={'size': 8})
-        plt.savefig(res + 'result.png')
+
+        if total_label == 3:
+            plt.savefig(res + 'Oral_result.png')
+        elif total_label == 5:
+            plt.savefig(res + 'Gut_result.png')
+        else:
+            plt.savefig(res + 'result.png')
         # plt.show()
 
     if args.train:
+
+        X_train = pd.read_csv(input_file_X_train)
+        Y_train = pd.read_csv(input_file_Y_train)
+        Y_train = Y_train.iloc[:, 1].values
+
+        encoder = LabelEncoder()
+        Y_train = encoder.fit_transform(Y_train.ravel())
+        y_train = torch.LongTensor(Y_train)
+
+        x1_train = X_train[My_list[0]]
+        x2_train = X_train[My_list[1]]
+        x3_train = X_train[My_list[2]]
+        x4_train = X_train[My_list[3]]
+
+        train_list = [x1_train, x2_train, x3_train, x4_train]
+
+        for i in range(len(train_list)):
+            train_list[i] = np.array(train_list[i], dtype=np.float32)
+            train_list[i] = torch.FloatTensor(train_list[i])
+
+        train_dataset = MyDataset(train_list[0], train_list[1], train_list[2], train_list[3], y_train)
+        train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True)
+
         PM_CNN_train()
+
     elif args.test:
+
+        X_test = pd.read_csv(input_file_X_test)
+        Y_test = pd.read_csv(input_file_Y_test)
+        Y_test = Y_test.iloc[:, 1].values
+
+        encoder = LabelEncoder()
+        Y_test = encoder.fit_transform(Y_test.ravel())
+        y_test = torch.LongTensor(Y_test)
+
+        x1_test = X_test[My_list[0]]
+        x2_test = X_test[My_list[1]]
+        x3_test = X_test[My_list[2]]
+        x4_test = X_test[My_list[3]]
+
+        test_list = [x1_test, x2_test, x3_test, x4_test]
+
+        for i in range(len(test_list)):
+            test_list[i] = np.array(test_list[i], dtype=np.float32)
+            test_list[i] = torch.FloatTensor(test_list[i])
+
+        test_dataset = MyDataset(test_list[0], test_list[1], test_list[2], test_list[3], y_test)
+        test_loader = DataLoader(test_dataset, batch_size=args.test_num)
+
         proba, tru_label = PM_CNN_test()
         draw_ROC_curve(label_num, proba, tru_label)
 

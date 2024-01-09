@@ -24,6 +24,16 @@ def parse_arguments():
 
     parser.add_argument('--batch_size', type=int, default=32)
 
+    parser.add_argument('--test_num', type=int, default=477)
+
+    parser.add_argument('--batch_norm', type=int, default=64)
+
+    parser.add_argument('--label_sum', type=int, default=3)
+
+    parser.add_argument('--feature_sum', type=int, default=1554)
+
+    parser.add_argument('--shape', type=int, default=24576)
+
     parser.add_argument('--epoch', type=int, default=35)
 
     parser.add_argument('--learning_rate', type=float, default=5e-3)
