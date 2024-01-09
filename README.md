@@ -23,10 +23,10 @@
 * Contact
 
 ## Introduction
-  
+
   In this study, we proposed a new deep learning framework PM-CNN (Phylogenetic Multi-path Convolutional Neural Network), which combines convolutional neural networks and microbial phylogenetic structures to predict various human diseases.
-  
-### Package requirement
+
+### Package requirement:
 
     * torch >= 1.11.0
     * R >= 4.2.1
@@ -41,9 +41,7 @@
 git clone https://github.com/qdu-bioinfo/PM_CNN
 ```
 
-## Installation
-
-### Install requirements:
+## Installation:
 
 ```
 pip install -r requirements.txt
@@ -57,32 +55,34 @@ In this step, the sample abundance table needs to be obtained based on the abund
 
 #### Input:
 
-#### sample1:                                  
+#### sample1:
+
 | OTU_id | Count | Abundance |
-| ------ | ----- | --------- |				
-| 0      | 5     | 0.03      | 				
+| ------ | ----- | --------- |
+| 0      | 5     | 0.03      |
 | 1      | 10    | 0.1       |
 
 #### sample2:
-| OTU_id | Count | Abundance |				
-| ------ | ----- | --------- |				
+
+| OTU_id | Count | Abundance |
+| ------ | ----- | --------- |
 | 0      | 4     | 0.02      |
 | 1      | 2     | 0.001     |
 
 #### meta information:
-| SampleID | Status |
-| ------ | ----- |
-| sample1  |    Healthy    |
-| sample2  |    Healthy    |
-| sample3  |  Gingivitis   |
-| sample4  | Periodontitis |
 
+| SampleID | Status        |
+| -------- | ------------- |
+| sample1  | Healthy       |
+| sample2  | Healthy       |
+| sample3  | Gingivitis    |
+| sample4  | Periodontitis |
 
 #### Usage:
 
 ```
 preprocess/preprocess.py [--input] [-i] //Input the storage path of all samples
-		         [--meta] [-m] //Meta information of all samples
+                 [--meta] [-m] //Meta information of all samples
                          [--output] [-o] //Output the merged sample abundance table
 ```
 
