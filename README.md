@@ -57,25 +57,18 @@ In this step, the sample abundance table needs to be obtained based on the abund
 
 #### Input:
 
-#### Sample1:
+ Sample1:                                  
 | OTU_id | Count | Abundance |
-| ------ | ----- | --------- |
-|0       | 5     | 0.03      | 
-| 1      | 10    | 0.1       |
-
-#### Sample2:
-| OTU_id | Count | Abundance |
-| ------ | ----- | --------- |
+| ------ | ----- | --------- |				#### Meta information:
+|0       | 5     | 0.03      | 				| SampleID | Status |
+| 1      | 10    | 0.1       |				| ------ | ----- |
+											| sample1  |    Healthy    |
+ Sample2:									| sample2  |    Healthy    |
+| OTU_id | Count | Abundance |				| sample3  |  Gingivitis   |
+| ------ | ----- | --------- |				| sample4  | Periodontitis |
 | 0      | 4     | 0.02      |
 | 1      | 2     | 0.001     |
 
-#### Meta information:
-| SampleID | Status |
-| ------ | ----- |
-| sample1  |    Healthy    |
-| sample2  |  Gingivitis   |
-| sample3  |  Gingivitis   |
-| sample4  | Periodontitis |
 
 #### Usage:
 
