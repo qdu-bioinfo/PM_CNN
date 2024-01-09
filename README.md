@@ -72,16 +72,16 @@ In this step, the sample abundance table needs to be obtained based on the abund
 #### Meta information:
 | SampleID | Status |
 | ------ | ----- |
-| sample1  | Healthy  |
-| sample2  | Gingivitis  |
-| sample3  | Gingivitis  |
+| sample1  |    Healthy    |
+| sample2  |  Gingivitis   |
+| sample3  |  Gingivitis   |
 | sample4  | Periodontitis |
 
 #### Usage:
 
 ```
 preprocess/preprocess.py [--input] [-i] //Input the storage path of all samples
-		[--meta] [-m] //Meta information of all samples
+		         [--meta] [-m] //Meta information of all samples
                          [--output] [-o] //Output the merged sample abundance table
 ```
 
