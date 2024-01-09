@@ -10,15 +10,15 @@
 
 * Program running process:
   
-  * Step 1:Data preprocess(optional)
+  * Step 1: Data preprocess(optional)
   
-  * Step 2:Build a phylogenetic tree(optional)
+  * Step 2: Build a phylogenetic tree(optional)
   
-  * Step 3:Get correlation matrix
+  * Step 3: Get correlation matrix
   
-  * Step 4:Distance transformation and hierarchical clustering
+  * Step 4: Distance transformation and hierarchical clustering
   
-  * Step 5:Model training and testing
+  * Step 5: Model training and testing
 
 * Contact
 
@@ -51,23 +51,31 @@ pip install -r requirements.txt
 
 ## Program running process:
 
-### Step 1:Data preprocess
+### Step 1: data preprocess
 
 In this step, the sample abundance table needs to be obtained based on the abundance information of each sample and related meta information. We provide additional programs to support this input type. If you want to run PM-CNN on any other data set, you only need to modify the relevant path information according to the usage requirements below. If you already have the OTU abundance table of all samples, you can skip this step. If you want to run PM-CNN quickly, you can jump directly to the "Model training and testing" section and run the relevant commands.
 
 #### Input:
 
- Sample1:                                  
+#### Sample1:                                  
 | OTU_id | Count | Abundance |
-| ------ | ----- | --------- |				#### Meta information:
-|0       | 5     | 0.03      | 				| SampleID | Status |
-| 1      | 10    | 0.1       |				| ------ | ----- |
-											| sample1  |    Healthy    |
- Sample2:									| sample2  |    Healthy    |
-| OTU_id | Count | Abundance |				| sample3  |  Gingivitis   |
-| ------ | ----- | --------- |				| sample4  | Periodontitis |
+| ------ | ----- | --------- |				
+| 0      | 5     | 0.03      | 				
+| 1      | 10    | 0.1       |
+
+#### Sample2:
+| OTU_id | Count | Abundance |				
+| ------ | ----- | --------- |				
 | 0      | 4     | 0.02      |
 | 1      | 2     | 0.001     |
+
+#### Meta information:
+| SampleID | Status |
+| ------ | ----- |
+| sample1  |    Healthy    |
+| sample2  |    Healthy    |
+| sample3  |  Gingivitis   |
+| sample4  | Periodontitis |
 
 
 #### Usage:
@@ -84,7 +92,7 @@ preprocess/preprocess.py [--input] [-i] //Input the storage path of all samples
 python preprocess.py --input ../data/Gut/Raw_data --meta ../data/Gut/Gut_3113_meta.csv --output ../data/Gut_Abundance_table.xlsx
 ```
 
-### Step 2:Build a phylogenetic tree(optional)
+### Step 2: build a phylogenetic tree(optional)
 
 This step is optional, the phylogeny tree can either be constructed from representative sequences (e.g. marker gene or amplicon), or provided by users from a NEWICK format file (e.g. for shotgun). The evolutionary tree of the representative sequence is constructed by FastTree and Mafft. The related software can be downloaded to the official website, or please contact my e-mail. The commands involved are as follows:
 
@@ -113,7 +121,7 @@ FastTree(Construct a phylogenetic tree):
 FastTree -nt -gtr example/data/output.fasta > example/data/ex.tree  // you need to download FastTree
 ```
 
-### Step 3:Get correlation matrix
+### Step 3: get correlation matrix
 
 The Cophenetice distance matrix is obtained by using the cophenetic function in the R package ape. The related software can be downloaded to the official website, or please contact my e-mail.
 
@@ -132,7 +140,7 @@ Rscript get_dis_matrix.R --input example/data/ex.tree --output example/data/ex_d
 
 After obtaining the distance matrix, we aim to obtain the phylogenetic correlation between OTU. Therefore, the next step is to transform the distance matrix into the correlation matrix by the designed distance transformation formula, and then carry out hierarchical clustering based on the correlation matrix, and finally get the result of multi-layer clustering.
 
-### Step 4:Distance transformation and hierarchical clustering
+### Step 4: distance transformation and hierarchical clustering
 
 ```
 usage: example/code/get_represent_seqs.py [--input] [-i] //Input original distance matrix csv file
@@ -147,7 +155,7 @@ usage: example/code/get_represent_seqs.py [--input] [-i] //Input original distan
 python model/clustering.py --input ../data/Oral/oral_1554.csv --tran ../data/Oral/oral_1554_tran.csv --npy ../data/Oral/oral_1554_tran.npy --output ../data/Oral/Oral_feature.csv
 ```
 
-## Model training and prediction
+### Step 5: Model training and prediction
 
 Now, we have the training data and test data needed by the model. Next, we will begin to train the model and test the model, and before that, we need to introduce the usage of the model.
 
