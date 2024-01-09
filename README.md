@@ -57,29 +57,31 @@ In this step, the sample abundance table needs to be obtained based on the abund
 
 #### Input:
 
-Sample1:
+#### Sample1:
 | OTU_id | Count | Abundance |
 | ------ | ----- | --------- |
 |0       | 5     | 0.03      | 
 | 1      | 10    | 0.1       |
 
-Sample2:
+#### Sample2:
 | OTU_id | Count | Abundance |
 | ------ | ----- | --------- |
 | 0      | 4     | 0.02      |
 | 1      | 2     | 0.001     |
 
-Meta information:
-| SampleID | Status |Projet|
-| ------ | ----- | ----- |
-| sample1  | Healthy  | project1 |
-| sample2  | Gingivitis  | project2 |
+#### Meta information:
+| SampleID | Status |
+| ------ | ----- |
+| sample1  | Healthy  |
+| sample2  | Gingivitis  |
+| sample3  | Gingivitis  |
+| sample4  | Periodontitis |
 
 #### Usage:
 
 ```
 preprocess/preprocess.py [--input] [-i] //Input the storage path of all samples
-						 [--meta] [-m] //Meta information of all samples
+		[--meta] [-m] //Meta information of all samples
                          [--output] [-o] //Output the merged sample abundance table
 ```
 
