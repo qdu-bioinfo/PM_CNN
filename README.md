@@ -183,7 +183,7 @@ usage: model/PMCNN.py [--train] //train PM-CNN model [--test] //test PM-CNN mode
 
 #### Example running(Dataset 1):
 
-The human oral microbiome data contains 1587 samples with 1554 OTUs. Contains three label types: Control, Periodontitis, and Gingivitis, which are marked with 0, 1, and 2 respectively. Then, divide 70% of the samples into the training set and 30% of the samples into the test set. See our paper for description details. Also, in order for you to run our program quickly, we integrated the training and testing parts of the model. The output results can be viewed in the console, or please move to the result folder, we have saved 10 running results in advance for your quick viewing.
+The human oral microbiome data contains 1587 samples with 1554 OTUs. Contains three label types: Control(653), Periodontitis(274), and Gingivitis(660), which are marked with 0, 1, and 2 respectively. Then, divide 70% of the samples into the training set and 30% of the samples into the test set. See our paper for description details. Also, in order for you to run our program quickly, we integrated the training and testing parts of the model. The output results can be viewed in the console, or please move to the result folder, we have saved 10 running results in advance for your quick viewing.
 
 ```
 cd PM_CNN/model
@@ -203,7 +203,7 @@ python PMCNN.py --test --test_x ../data/Oral/test_data/X_test_1554.csv --test_y 
 
 #### Example running(Dataset 2):
 
-The human gut microbiome data contains 3113 samples with 5597 OTUs. Contains five label types: Control, IBD, HIV, EDD, and CRC, which are marked with 0, 1, 2, 3, and 4 respectively. Then, divide 70% of the samples into the training set and 30% of the samples into the test set. See our paper for description details. The output results can be viewed in the console, or please move to the result folder, we have saved 10 running results in advance for your quick viewing.
+The human gut microbiome data contains 3113 samples with 5597 OTUs. Contains five label types: Control(1418), IBD(993), HIV(360), EDD(222), and CRC(120), which are marked with 0, 1, 2, 3, and 4 respectively. Then, divide 70% of the samples into the training set and 30% of the samples into the test set. See our paper for description details. The output results can be viewed in the console, or please move to the result folder, we have saved 10 running results in advance for your quick viewing.
 
 #### Training PM-CNN:
 
