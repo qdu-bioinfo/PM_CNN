@@ -9,16 +9,14 @@
 * Installation
 
 * Program running process:
+    
+  * Step 1: Build a phylogenetic tree (optional)
   
-  * Step 1: Data preprocess(optional)
+  * Step 2: Get correlation matrix
   
-  * Step 2: Build a phylogenetic tree(optional)
+  * Step 3: Distance transformation and hierarchical clustering
   
-  * Step 3: Get correlation matrix
-  
-  * Step 4: Distance transformation and hierarchical clustering
-  
-  * Step 5: Model training and testing
+  * Step 4: Model training and testing
 
 * Contact
 
@@ -58,10 +56,10 @@ Prior to initiating the execution of PM-CNN, it is imperative to confirm the for
 
 |  | OTU1 | OTU2 | OTU3 | OTU4|
 | ------ | ------ | ------ | ------ | ------ |
-| sample1      | 0.01     | 0.03      | 0.02 | 0.06 |
-| sample2      | 0.05    | 0.1       | 0.03 | 0.001 |
-| sample3      | 0.01    | 0.2       | 0.06 | 0.01 |
-| sample4      | 0.01    | 0.02       | 0.01 | 0.001 |
+| sample1      | 0.01     | 0.03      | 0 | 0.06 |
+| sample2      | 0.05    | 0       | 0.03 | 0.001 |
+| sample3      | 0    | 0.2       | 0 | 0.01 |
+| sample4      | 0    | 0.02       | 0.01 | 0.001 |
 
 #### meta information:
 
@@ -72,12 +70,21 @@ Prior to initiating the execution of PM-CNN, it is imperative to confirm the for
 | sample3  | Gingivitis    |
 | sample4  | Periodontitis |
 
+If you are missing a merged OTU abundance table, we provide additional merge procedures below this paragraph for your consideration. This process is optional and can be ignored if you have other merging methods.
+
+You can find the meaning of all parameters in Usage.
+
 #### Usage:
 
 ```
-preprocess/preprocess.py [--input] [-i] //Input the storage path of all samples
-                         [--meta] [-m] //Meta information of all samples
-                         [--output] [-o] //Output the merged sample abundance table
+preprocess/preprocess.py [--input] [-i] 
+                         [--meta] [-m] 
+                         [--output] [-o]
+
+arguments:
+--input, -i			Input the storage path of all sample abundance files
+--meta, -m			Input the storage path of all sample meta information
+--output, -o		Output the combined results of all sample abundance files
 ```
 
 #### Example running:
@@ -86,7 +93,7 @@ preprocess/preprocess.py [--input] [-i] //Input the storage path of all samples
 python preprocess.py --input ../data/Gut/Raw_data --meta ../data/Gut/Gut_3113_meta.csv --output ../data/Gut_Abundance_table.xlsx
 ```
 
-### Step 2: Build a phylogenetic tree(optional)
+### Step 1: Build a phylogenetic tree (optional)
 
 This step is optional, the phylogeny tree can either be constructed from representative sequences (e.g. marker gene or amplicon), or provided by users from a NEWICK format file (e.g. for shotgun). The evolutionary tree of the representative sequence is constructed by FastTree and Mafft. The related software can be downloaded to the official website, or please contact my e-mail. The commands involved are as follows:
 
