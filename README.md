@@ -49,25 +49,19 @@ pip install -r requirements.txt
 
 ## Program running process:
 
-### Step 1: Data preprocess
 
-In this step, the sample abundance table needs to be obtained based on the abundance information of each sample and related meta information. We provide additional programs to support this input type. If you want to run PM-CNN on any other data set, you only need to modify the relevant path information according to the usage requirements below. If you already have the OTU abundance table of all samples, you can skip this step. If you want to run PM-CNN quickly, you can jump directly to the "Model training and testing" section and run the relevant commands.
+Prior to initiating the execution of PM-CNN, it is imperative to confirm the format of the input data. The input data should exclusively adhere to the microbial feature table structure, (e.g. OTU table or species table). Ensuring compliance with this prerequisite is crucial for the accurate and effective utilization of PM-CNN in the analysis. 
 
-#### Input:
+#### example:
 
-#### sample1:
+#### OTU table:
 
-| OTU_id | Count | Abundance |
-| ------ | ----- | --------- |
-| 0      | 5     | 0.03      |
-| 1      | 10    | 0.1       |
-
-#### sample2:
-
-| OTU_id | Count | Abundance |
-| ------ | ----- | --------- |
-| 0      | 4     | 0.02      |
-| 1      | 2     | 0.001     |
+|  | OTU1 | OTU2 | OTU3 | OTU4|
+| ------ | ------ | ------ | ------ | ------ |
+| sample1      | 0.01     | 0.03      | 0.02 | 0.06 |
+| sample2      | 0.05    | 0.1       | 0.03 | 0.001 |
+| sample3      | 0.01    | 0.2       | 0.06 | 0.01 |
+| sample4      | 0.01    | 0.02       | 0.01 | 0.001 |
 
 #### meta information:
 
