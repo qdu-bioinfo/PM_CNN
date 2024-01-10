@@ -58,10 +58,10 @@ Prior to initiating the execution of PM-CNN, it is imperative to confirm the for
 
 |  | OTU1 | OTU2 | OTU3 | OTU4|
 | ------ | ------ | ------ | ------ | ------ |
-| sample1      | ------ | 0.01     | 0.03      | 0.02 | 0.06 |
-| sample2      | ------ | 0.05    | 0.1       | 0.03 | 0.001 |
-| sample3      | ------ | 0.01    | 0.2       | 0.06 | 0.01 |
-| sample4      | ------ | 0.01    | 0.02       | 0.01 | 0.001 |
+| sample1      | 0.01     | 0.03      | 0.02 | 0.06 |
+| sample2      | 0.05    | 0.1       | 0.03 | 0.001 |
+| sample3      | 0.01    | 0.2       | 0.06 | 0.01 |
+| sample4      | 0.01    | 0.02       | 0.01 | 0.001 |
 
 #### meta information:
 
