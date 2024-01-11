@@ -26,7 +26,7 @@
 
 In this study, we proposed a new deep learning framework PM-CNN (Phylogenetic Multi-path Convolutional Neural Network), which combines convolutional neural networks and microbial phylogenetic structures to predict various human diseases.
 
-### Package requirement:
+## Package requirement
 
     * torch >= 1.11.0
     * R >= 4.2.1
@@ -35,13 +35,13 @@ In this study, we proposed a new deep learning framework PM-CNN (Phylogenetic Mu
     * scikit-learn >= 1.1.1
     * matplotlib >= 3.5.1
 
-### Download PM-CNN:
+#### Download PM-CNN:
 
 ```
 git clone https://github.com/qdu-bioinfo/PM_CNN
 ```
 
-## Installation:
+## Installation
 
 ```
 pip install -r requirements.txt
