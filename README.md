@@ -47,7 +47,7 @@ git clone https://github.com/qdu-bioinfo/PM_CNN
 pip install -r requirements.txt
 ```
 
-## Program running process:
+## Input format
 
 Prior to initiating the execution of PM-CNN, it is imperative to confirm the format of the input data. The input data should exclusively adhere to the microbial feature table structure, (e.g. OTU table or species table). Ensuring compliance with this prerequisite is crucial for the accurate and effective utilization of PM-CNN in the analysis. 
 
@@ -180,7 +180,7 @@ You can view test results directly in the console.
 python PMCNN.py --test --test_otu_table ../example/test_data/example_test.csv
 ```
 
-## Dataset introduction
+## Data availability
 
 ### [Dataset 1](https://github.com/qdu-bioinfo/PM_CNN/tree/main/data/the%20human%20gut%20microbiome%20(dataset1))
 
