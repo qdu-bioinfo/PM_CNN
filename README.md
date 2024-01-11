@@ -17,6 +17,8 @@
   * Step 3: Distance transformation and hierarchical clustering
   
   * Step 4: Model training and testing
+  
+* Dataset introduction
 
 * Contact
 
@@ -177,6 +179,8 @@ You can view test results directly in the console.
 ```
 python PMCNN.py --test --test_otu_table ../example/test_data/example_test.csv
 ```
+
+## Dataset introduction
 
 ### Dataset 1:
 
