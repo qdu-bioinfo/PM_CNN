@@ -185,11 +185,11 @@ python PMCNN.py --test --test_otu_table ../example/test_data/example_test.csv
 ### [Dataset 1](https://github.com/qdu-bioinfo/PM_CNN/tree/main/data/the%20human%20gut%20microbiome%20(dataset1))
 
 
-The human oral microbiome data contains 1587 samples with 1554 OTUs. Contains three label types: Control(653), Periodontitis(274), and Gingivitis(660), which are marked with 0, 1, and 2 respectively. 
+The human oral microbiome data contains 1587 samples with 1554 OTUs. Contains three label types: Control(653), Periodontitis(274), and Gingivitis(660), which are marked with 0, 1, and 2 respectively. See our paper for details.
 
-### [Dataset 2](data/the human oral microbiom (dataset2))
+### [Dataset 2](https://github.com/qdu-bioinfo/PM_CNN/tree/main/data/the%20human%20oral%20microbiom%20(dataset2))
 
-The human gut microbiome data contains 3113 samples with 5597 OTUs. Contains five label types: Control(1418), IBD(993), HIV(360), EDD(222), and CRC(120), which are marked with 0, 1, 2, 3, and 4 respectively.
+The human gut microbiome data contains 3113 samples with 5597 OTUs. Contains five label types: Control(1418), IBD(993), HIV(360), EDD(222), and CRC(120), which are marked with 0, 1, 2, 3, and 4 respectively. See our paper for details.
 
 
 ## Contact
