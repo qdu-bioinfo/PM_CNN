@@ -1,0 +1,16 @@
+Parallel-META Analysis Report
+Version 3.4.1
+Domain : Bacteria (16S rRNA)
+Input Type : rRNA Targeted Sequences
+Input File : /home/gene/huangshi/meta-analysis/gingivitis_PG_OCregimen/seqfiles/OCregimen.5641D11.fasta
+Alignment Mode : very-sensitive-local
+rRNA Sequence Number : 4082
+Mapped rRNA Sequence Number : 4082
+Alpha Diversity:
+Kingdom	1
+Phylum	10
+Class	17
+Order	24
+Family	40
+Genus	61
+OTU	333

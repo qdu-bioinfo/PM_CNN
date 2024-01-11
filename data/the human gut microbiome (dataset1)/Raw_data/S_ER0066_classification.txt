@@ -1,0 +1,19 @@
+#Database_OTU	Count	Abundance	Taxonomy
+522591	1	0.00101375	Bacteria; Bacteroidetes; Bacteroidia; Bacteroidales; S24_7; S24_7_Group; Unclassified; otu_522591
+114510	9	0.00391018	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Escherichia; coli; otu_114510
+3600504	1	0.00060825	Bacteria; Bacteroidetes; Bacteroidia; Bacteroidales; Bacteroidaceae; Bacteroides; Unclassified; otu_3600504
+202829	10	0.00434465	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Proteus; Unclassified; otu_202829
+298120	1	0.00060825	Bacteria; Firmicutes; Bacilli; Lactobacillales; Leuconostocaceae; Weissella; Unclassified; otu_298120
+231787	465	0.235697	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Escherichia_Shigella; Unclassified; otu_231787
+295053	440	0.191164	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Escherichia_Shigella; Unclassified; otu_295053
+667570	1	0.000506875	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Cronobacter; dublinensis; otu_667570
+318763	1	0.00060825	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Lactococcus; Unclassified; otu_318763
+4318935	1	0.00304125	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Enterobacter; Unclassified; otu_4318935
+4423027	300	0.130339	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Enterobacter; Unclassified; otu_4423027
+355912	1	0.000760313	Bacteria; Firmicutes; Clostridia; Clostridiales; Ruminococcaceae; Ruminococcaceae_Group; Unclassified; otu_355912
+345362	451	0.195944	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Escherichia_Shigella; Unclassified; otu_345362
+588216	480	0.208543	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Escherichia_Shigella; Unclassified; otu_588216
+518002	2	0.0060825	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Enterobacter; sp._enrichment_culture_clone_SRC_NBB1; otu_518002
+3825935	1	0.00060825	Bacteria; Proteobacteria; Gammaproteobacteria; Pasteurellales; Pasteurellaceae; Haemophilus; Unclassified; otu_3825935
+344178	1	0.00101375	Bacteria; Bacteroidetes; Bacteroidia; Bacteroidales; Rikenellaceae; hoa5_07d05; Unclassified; otu_344178
+666757	5	0.0152063	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Klebsiella; Unclassified; otu_666757

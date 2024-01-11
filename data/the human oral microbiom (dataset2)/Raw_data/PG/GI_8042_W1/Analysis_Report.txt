@@ -1,0 +1,18 @@
+Parallel-META Analysis Report
+Version 3.4.1
+Domain : Bacteria (16S rRNA)
+Input Type : rRNA Targeted Sequences
+Input File : SoH243_PM3.4_out/Single_Sample/GI_8042_W1/meta.fasta
+Input Paired File : SoH243_PM3.4_out/Single_Sample/GI_8042_W1/meta2.fasta
+Input Paired File rientation : fr
+Alignment Mode : very-sensitive-local
+rRNA Sequence Number : 30132
+Mapped rRNA Sequence Number : 30132
+Alpha Diversity:
+Kingdom	1
+Phylum	22
+Class	38
+Order	64
+Family	95
+Genus	185
+OTU	1018

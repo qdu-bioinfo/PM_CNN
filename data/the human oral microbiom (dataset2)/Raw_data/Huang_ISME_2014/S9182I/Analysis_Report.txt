@@ -1,0 +1,16 @@
+Parallel-META Analysis Report
+Version 3.4.1
+Domain : Bacteria (16S rRNA)
+Input Type : rRNA Targeted Sequences
+Input File : /home/gene/huangshi/meta-analysis/gingivitis_PG150/seqfiles/S9182I.fasta
+Alignment Mode : very-sensitive-local
+rRNA Sequence Number : 3968
+Mapped rRNA Sequence Number : 3968
+Alpha Diversity:
+Kingdom	1
+Phylum	11
+Class	21
+Order	28
+Family	43
+Genus	69
+OTU	605

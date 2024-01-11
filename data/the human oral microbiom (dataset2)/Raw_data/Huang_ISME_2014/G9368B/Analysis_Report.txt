@@ -1,0 +1,16 @@
+Parallel-META Analysis Report
+Version 3.4.1
+Domain : Bacteria (16S rRNA)
+Input Type : rRNA Targeted Sequences
+Input File : /home/gene/huangshi/meta-analysis/gingivitis_PG123/seqfiles/S9230I.fasta
+Alignment Mode : very-sensitive-local
+rRNA Sequence Number : 2703
+Mapped rRNA Sequence Number : 2703
+Alpha Diversity:
+Kingdom	1
+Phylum	10
+Class	16
+Order	23
+Family	37
+Genus	57
+OTU	386

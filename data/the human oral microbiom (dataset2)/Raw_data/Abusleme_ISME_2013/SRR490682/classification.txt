@@ -1,0 +1,192 @@
+#Database_OTU	Count	Abundance	Taxonomy
+4313722	1	4.28237e-05	Bacteria; Fusobacteria; Fusobacteria; Fusobacteriales; Fusobacteriaceae; Fusobacterium; Unclassified; otu_4313722
+4473227	22	0.00219828	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_4473227
+322136	2	6.66146e-05	Bacteria; Firmicutes; Bacilli; Bacillales; Bacillaceae; Bacillus; thermoamylovorans; otu_322136
+1030589	53	0.00317752	Bacteria; Firmicutes; Negativicutes; Selenomonadales; Veillonellaceae; Selenomonas; Unclassified; otu_1030589
+4401957	1	9.99219e-05	Bacteria; Proteobacteria; Epsilonproteobacteria; Campylobacterales; Campylobacteraceae; Campylobacter; Unclassified; otu_4401957
+4475758	1	5.99532e-05	Bacteria; Firmicutes; Negativicutes; Selenomonadales; Veillonellaceae; Veillonella; dispar; otu_4475758
+518865	220	0.00942121	Bacteria; Fusobacteria; Fusobacteria; Fusobacteriales; Fusobacteriaceae; Fusobacterium; Unclassified; otu_518865
+4383963	3	0.000128471	Bacteria; Fusobacteria; Fusobacteria; Fusobacteriales; Fusobacteriaceae; Fusobacterium; Unclassified; otu_4383963
+171768	1	4.9961e-05	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Flavobacterium; Unclassified; otu_171768
+4431443	1	9.99219e-05	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Micrococcaceae; Rothia; dentocariosa; otu_4431443
+529233	1	5.99532e-05	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_529233
+4306166	14	0.00139891	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; gerencseriae; otu_4306166
+851932	1	9.99219e-05	Bacteria; Proteobacteria; Betaproteobacteria; Neisseriales; Neisseriaceae; Kingella; denitrificans; otu_851932
+4401186	3	0.000299766	Bacteria; Proteobacteria; Betaproteobacteria; Neisseriales; Neisseriaceae; Eikenella; Unclassified; otu_4401186
+297365	2	6.66146e-05	Bacteria; Firmicutes; Bacilli; Bacillales; Bacillaceae; Anoxybacillus; kestanbolensis; otu_297365
+4322998	117	0.00501037	Bacteria; Fusobacteria; Fusobacteria; Fusobacteriales; Fusobacteriaceae; Fusobacterium; Unclassified; otu_4322998
+4295743	2	9.99219e-05	Bacteria; Proteobacteria; Gammaproteobacteria; Pasteurellales; Pasteurellaceae; Haemophilus; parainfluenzae; otu_4295743
+4315529	1	0.000149883	Bacteria; OD1; ZB2; Unclassified; otu_4315529
+685178	1	0.000299766	Bacteria; Proteobacteria; Alphaproteobacteria; BD7_3; Unclassified; otu_685178
+4306176	689	0.0688462	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Micrococcaceae; Rothia; dentocariosa; otu_4306176
+4306177	169	0.0126651	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_4306177
+123752	1	7.49414e-05	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Weeksellaceae; Chryseobacterium; Unclassified; otu_123752
+4306178	666	0.066548	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Micrococcaceae; Rothia; dentocariosa; otu_4306178
+4315538	4	0.000299766	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Burkholderiaceae; Lautropia; Unclassified; otu_4315538
+1084906	16	0.000959251	Bacteria; Firmicutes; Bacilli; Bacillales; Staphylococcaceae; Staphylococcus; Unclassified; otu_1084906
+4299277	1	0.000149883	Bacteria; GN02; GKS2_174; Unclassified; otu_4299277
+899059	44	0.00329742	Bacteria; Firmicutes; Bacilli; Lactobacillales; Carnobacteriaceae; Granulicatella; Unclassified; otu_899059
+4393071	3	0.000299766	Bacteria; Proteobacteria; Epsilonproteobacteria; Campylobacterales; Campylobacteraceae; Campylobacter; Unclassified; otu_4393071
+4340961	12	0.00119906	Bacteria; Actinobacteria; Actinobacteria; Propionibacteriales; Propionibacteriaceae; Propionibacterium; Unclassified; otu_4340961
+1052881	1	0.000149883	Bacteria; Proteobacteria; Deltaproteobacteria; Desulfuromonadales; Desulfuromonadaceae; Desulfuromonas; Unclassified; otu_1052881
+1137157	1	7.49414e-05	Bacteria; Proteobacteria; Alphaproteobacteria; Rhizobiales; Bradyrhizobiaceae; Balneimonas; Unclassified; otu_1137157
+316001	1	0.000149883	Bacteria; TM7; TM7_1; Unclassified; otu_316001
+4311254	6	0.000599532	Bacteria; Proteobacteria; Betaproteobacteria; Neisseriales; Neisseriaceae; Kingella; Unclassified; otu_4311254
+131115	1	5.99532e-05	Bacteria; Proteobacteria; Gammaproteobacteria; Pseudomonadales; Moraxellaceae; Acinetobacter; Unclassified; otu_131115
+240252	8	0.000799375	Bacteria; Proteobacteria; Alphaproteobacteria; Rhodospirillales; Acetobacteraceae; Acidocella; Unclassified; otu_240252
+163903	1	7.49414e-05	Bacteria; Firmicutes; Clostridia; Clostridiales; Sulfobacillaceae; Sulfobacillaceae_Group; Unclassified; otu_163903
+767270	2	0.000199844	Bacteria; Bacteroidetes; Bacteroidia; Bacteroidales; Porphyromonadaceae; Porphyromonas; Unclassified; otu_767270
+4318700	7	0.00104918	Bacteria; TM7; TM7_3; TM7; TM7; TM7; Unclassified; otu_4318700
+993705	55	0.00412178	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_993705
+4305815	10	0.000749414	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; sanguinis; otu_4305815
+808810	1	0.000149883	Bacteria; Cyanobacteria; Chloroplast; Stramenopiles; Unclassified; otu_808810
+4416015	371	0.037071	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_4416015
+561537	1	5.99532e-05	Bacteria; Firmicutes; Negativicutes; Selenomonadales; Veillonellaceae; Veillonella; Unclassified; otu_561537
+4449198	166	0.016587	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; viscosus_naeslundii_oris; otu_4449198
+4305791	3	0.000449649	Bacteria; Proteobacteria; Gammaproteobacteria; Cardiobacteriales; Cardiobacteriaceae; Cardiobacterium; Unclassified; otu_4305791
+4396234	3	0.000449649	Bacteria; Proteobacteria; Gammaproteobacteria; Cardiobacteriales; Cardiobacteriaceae; Cardiobacterium; Unclassified; otu_4396234
+205855	1	7.49414e-05	Bacteria; Bacteroidetes; Cytophagia; Cytophagales; Cytophagaceae; Cytophagaceae_Group; Unclassified; otu_205855
+4416763	50	0.00374707	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_4416763
+4464124	1	7.49414e-05	Bacteria; Firmicutes; Clostridia; Clostridiales; Ruminococcaceae; Faecalibacterium; prausnitzii; otu_4464124
+4419788	32	0.00239813	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; mitis_pneumoniae_infantis_oralis; otu_4419788
+4467096	1	0.000149883	Bacteria; Caldiserica; Caldisericia; Caldisericales; Caldisericaceae; Caldisericum; Unclassified; otu_4467096
+983098	4	0.000299766	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Capnocytophaga; Unclassified; otu_983098
+4477696	1	4.9961e-05	Bacteria; Proteobacteria; Gammaproteobacteria; Pasteurellales; Pasteurellaceae; Haemophilus; parainfluenzae; otu_4477696
+867184	3	0.000299766	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_867184
+4306356	68	0.00679469	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; israelii; otu_4306356
+4452538	59	0.0025266	Bacteria; Fusobacteria; Fusobacteria; Fusobacteriales; Fusobacteriaceae; Fusobacterium; Unclassified; otu_4452538
+87442	3	0.000224824	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Capnocytophaga; ochracea; otu_87442
+257492	10	0.000749414	Bacteria; Firmicutes; Bacilli; Lactobacillales; Carnobacteriaceae; Granulicatella; Unclassified; otu_257492
+315609	1	0.000149883	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Comamonadaceae; Limnohabitans; Unclassified; otu_315609
+4306415	1	5.99532e-05	Bacteria; Firmicutes; Negativicutes; Selenomonadales; Veillonellaceae; Selenomonas; Unclassified; otu_4306415
+827219	1	0.000149883	Bacteria; TM7; TM7_1; Unclassified; otu_827219
+816868	1	0.000149883	Bacteria; Proteobacteria; Gammaproteobacteria; Xanthomonadales; Xanthomonadaceae; Rhodanobacter; Unclassified; otu_816868
+4416105	1	0.000299766	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Microbacteriaceae; Clavibacter; Unclassified; otu_4416105
+1089121	14	0.00139891	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; odontolyticus_lingnae; otu_1089121
+4337090	1	5.99532e-05	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_4337090
+965289	1	9.99219e-05	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; viscosus_naeslundii_oris; otu_965289
+4715	1	7.49414e-05	Bacteria; Proteobacteria; Alphaproteobacteria; Rhizobiales; Rhizobiales_Incertae_Sedis; Phreatobacter; bacterium; otu_4715
+513602	105	0.0157377	Bacteria; Proteobacteria; Gammaproteobacteria; Xanthomonadales; Xanthomonadaceae; Rhodanobacter; Unclassified; otu_513602
+111630	1	0.000149883	Bacteria; GN02; GKS2_174; Unclassified; otu_111630
+4406270	1	0.000149883	Bacteria; OP11; OP11_4; Unclassified; otu_4406270
+4299527	1218	0.121705	Bacteria; Actinobacteria; Actinobacteria; Propionibacteriales; Propionibacteriaceae; Propionibacterium; Unclassified; otu_4299527
+4296512	2	0.000149883	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Capnocytophaga; Unclassified; otu_4296512
+348880	1	0.000149883	Bacteria; Proteobacteria; Alphaproteobacteria; Sphingomonadales; Sphingomonadaceae; Sphingomonas; Unclassified; otu_348880
+4320699	7	0.000419672	Bacteria; Firmicutes; Negativicutes; Selenomonadales; Veillonellaceae; Veillonella; dispar; otu_4320699
+4424886	8	0.000599532	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_4424886
+553583	1	0.000149883	Bacteria; OD1; ZB2; Unclassified; otu_553583
+4320756	1	4.9961e-05	Bacteria; Proteobacteria; Gammaproteobacteria; Pasteurellales; Pasteurellaceae; Haemophilus; parainfluenzae; otu_4320756
+4467993	169	0.0168868	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_4467993
+938243	1	5.99532e-05	Bacteria; Firmicutes; Bacilli; Bacillales; Staphylococcaceae; Staphylococcus; Unclassified; otu_938243
+4458736	2	0.000299766	Bacteria; TM7; TM7_3; TM7; TM7; TM7; oral_taxon_347; otu_4458736
+1049927	1	9.99219e-05	Bacteria; Bacteroidetes; Sphingobacteria; Sphingobacteriales; Unclassified; otu_1049927
+4342225	31	0.00309758	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; massiliensis; otu_4342225
+1918593	1	0.000149883	Bacteria; Proteobacteria; Deltaproteobacteria; Spirobacillales; Unclassified; otu_1918593
+557957	1	3.74707e-05	Bacteria; Proteobacteria; Gammaproteobacteria; Vibrionales; Vibrionaceae; Vibrio; metschnikovii; otu_557957
+4294749	1	9.99219e-05	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_4294749
+4387056	1	2.99766e-05	Bacteria; Firmicutes; Bacilli; Bacillales; Bacillaceae; Bacillus; flexus; otu_4387056
+4408129	1	7.49414e-05	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Pantoea; Unclassified; otu_4408129
+4448211	4	0.000399688	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_4448211
+950828	4	0.000199844	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcaceae_Group; Unclassified; otu_950828
+856270	405	0.0404684	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_856270
+1601889	1	0.000149883	Bacteria; Spirochaetes; Spirochaetes; Spirochaetales; Spirochaetaceae; Spirochaeta; Unclassified; otu_1601889
+631363	1	9.99219e-05	Bacteria; Proteobacteria; Betaproteobacteria; Nitrosomonadales; Nitrosomonadaceae; Nitrosomonadaceae_Group; Unclassified; otu_631363
+4339777	5	0.00049961	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Micrococcaceae; Rothia; dentocariosa; otu_4339777
+562992	1	9.99219e-05	Bacteria; Proteobacteria; Betaproteobacteria; Neisseriales; Neisseriaceae; Neisseria; Unclassified; otu_562992
+219439	1	0.000149883	Bacteria; Proteobacteria; Gammaproteobacteria; Xanthomonadales; Xanthomonadaceae; Stenotrophomonas; Unclassified; otu_219439
+4390403	1	7.49414e-05	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_4390403
+4368806	1	9.99219e-05	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomycetaceae_Group; Unclassified; otu_4368806
+871932	2	0.000199844	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_871932
+15571	11	0.000824356	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_15571
+4307843	4	0.000299766	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Bergeyella; Unclassified; otu_4307843
+3218995	1	0.000149883	Bacteria; OD1; Mb_NB09; Unclassified; otu_3218995
+4326219	4	0.000399688	Bacteria; Proteobacteria; Epsilonproteobacteria; Campylobacterales; Campylobacteraceae; Campylobacter; HB035; otu_4326219
+1057995	5	0.000749414	Bacteria; Proteobacteria; Gammaproteobacteria; Cardiobacteriales; Cardiobacteriaceae; Cardiobacterium; valvarum; otu_1057995
+1069592	34	0.00254801	Bacteria; Firmicutes; Bacilli; Lactobacillales; Carnobacteriaceae; Granulicatella; Unclassified; otu_1069592
+4477897	116	0.0115909	Bacteria; Proteobacteria; Epsilonproteobacteria; Campylobacterales; Campylobacteraceae; Campylobacter; Unclassified; otu_4477897
+4467411	2	0.000299766	Bacteria; OD1; ZB2; Unclassified; otu_4467411
+1032841	1	9.99219e-05	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_1032841
+4306563	1	0.000149883	Bacteria; OD1; ZB2; Unclassified; otu_4306563
+1026498	36	0.00359719	Bacteria; Proteobacteria; Betaproteobacteria; Neisseriales; Neisseriaceae; Eikenella; corrodens; otu_1026498
+4333020	1	0.000299766	Bacteria; Proteobacteria; Gammaproteobacteria; Enterobacteriales; Enterobacteriaceae; Enterobacter; Unclassified; otu_4333020
+810194	1	0.000149883	Bacteria; SR1; Unclassified; otu_810194
+4301027	415	0.0414676	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_4301027
+4439690	1	5.99532e-05	Bacteria; Firmicutes; Negativicutes; Selenomonadales; Veillonellaceae; Selenomonas; Unclassified; otu_4439690
+783719	3	0.000299766	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Burkholderiaceae; Ralstonia; Unclassified; otu_783719
+181996	1	9.99219e-05	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Oxalobacteraceae; Herbaspirillum; Unclassified; otu_181996
+575956	10	0.000599532	Bacteria; Proteobacteria; Alphaproteobacteria; Rhizobiales; Methylobacteriaceae; Methylobacterium; Unclassified; otu_575956
+4374289	35	0.0052459	Bacteria; TM7; TM7_3; Unclassified; otu_4374289
+805257	1	3.74707e-05	Bacteria; Firmicutes; Bacilli; Bacillales; Bacillaceae; Bacillus; Unclassified; otu_805257
+720188	1	0.000149883	Bacteria; OD1; ZB2; Unclassified; otu_720188
+4437231	28	0.00279781	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_4437231
+153590	1	9.99219e-05	Bacteria; Bacteroidetes; Sphingobacteria; Sphingobacteriales; Sphingobacteriaceae; Pedobacter; Unclassified; otu_153590
+373689	1	2.99766e-05	Bacteria; Firmicutes; Bacilli; Bacillales; Paenibacillaceae; Paenibacillus; Unclassified; otu_373689
+785526	8	0.000479625	Bacteria; Proteobacteria; Alphaproteobacteria; Rhizobiales; Methylobacteriaceae; Methylobacterium; Unclassified; otu_785526
+1135830	1	9.99219e-05	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Comamonadaceae; Schlegelella; Unclassified; otu_1135830
+4435455	4	0.000399688	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Burkholderiaceae; Limnobacter; Unclassified; otu_4435455
+1108638	224	0.0223825	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_1108638
+1062356	2	0.000119906	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Corynebacteriaceae; Corynebacterium; Unclassified; otu_1062356
+4344943	2	0.000149883	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Burkholderiaceae; Lautropia; mirabilis; otu_4344943
+286030	1	0.000149883	Bacteria; Actinobacteria; Actinobacteria; Propionibacteriales; Nocardioidaceae; Nocardioides; Unclassified; otu_286030
+521851	5	0.000374707	Bacteria; Firmicutes; Bacilli; Lactobacillales; Carnobacteriaceae; Granulicatella; adiacens; otu_521851
+842284	20	0.00299766	Bacteria; Proteobacteria; Gammaproteobacteria; Xanthomonadales; Xanthomonadaceae; Dyella; Unclassified; otu_842284
+4337383	1	9.99219e-05	Bacteria; Proteobacteria; Betaproteobacteria; Neisseriales; Neisseriaceae; Neisseria; Unclassified; otu_4337383
+3549446	4	0.000199844	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Burkholderiaceae; Burkholderia; Unclassified; otu_3549446
+1111925	1	0.000149883	Bacteria; OP11; OP11_4; Unclassified; otu_1111925
+4360320	1333	0.133196	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Micrococcaceae; Rothia; dentocariosa; otu_4360320
+4314014	14	0.00139891	Bacteria; Actinobacteria; Actinobacteria; Propionibacteriales; Propionibacteriaceae; Propionibacterium; propionicum; otu_4314014
+461318	1	9.99219e-05	Bacteria; Bacteroidetes; Sphingobacteria; Sphingobacteriales; Chitinophagaceae; Sediminibacterium; Unclassified; otu_461318
+1110594	3	0.000299766	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_1110594
+4360323	1	0.000149883	Bacteria; TM7; TM7_1; Unclassified; otu_4360323
+4376230	1	4.9961e-05	Bacteria; Proteobacteria; Gammaproteobacteria; Pseudomonadales; Moraxellaceae; Acinetobacter; Unclassified; otu_4376230
+4350466	12	0.000899297	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Bergeyella; 602D02; otu_4350466
+328765	1	0.000149883	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Nocardiaceae; Nocardia; Unclassified; otu_328765
+811596	5	0.00049961	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Comamonadaceae; Pelomonas; Unclassified; otu_811596
+4314814	179	0.017886	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Micrococcaceae; Rothia; aeria; otu_4314814
+4428811	2	0.000119906	Bacteria; Firmicutes; Negativicutes; Selenomonadales; Veillonellaceae; Selenomonas; 502C12; otu_4428811
+989579	49	0.0029377	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_989579
+4091471	1	0.000149883	Bacteria; Acidobacteria; Acidobacteria; iii1_15; Unclassified; otu_4091471
+4375688	5	0.00049961	Bacteria; Proteobacteria; Epsilonproteobacteria; Campylobacterales; Campylobacteraceae; Campylobacter; concisus; otu_4375688
+4426982	5	0.000374707	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Burkholderiaceae; Lautropia; Unclassified; otu_4426982
+4328888	1	0.000149883	Bacteria; OD1; Unclassified; otu_4328888
+930655	5	0.000299766	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Corynebacteriaceae; Corynebacterium; durum; otu_930655
+926160	11	0.000549571	Bacteria; Proteobacteria; Alphaproteobacteria; Rhizobiales; Methylobacteriaceae; Methylobacterium; strain_F15; otu_926160
+4428042	26	0.00194848	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_4428042
+4376255	1	9.99219e-05	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Micrococcaceae; Rothia; dentocariosa; otu_4376255
+4300667	1	9.99219e-05	Bacteria; Bacteroidetes; Bacteroidia; Bacteroidales; Unclassified; otu_4300667
+931952	1	0.000149883	Bacteria; Proteobacteria; Betaproteobacteria; Nitrosomonadales; Gallionellaceae; Candidatus_Nitrotoga; Unclassified; otu_931952
+332557	1	7.49414e-05	Bacteria; Proteobacteria; Gammaproteobacteria; Pseudomonadales; Pseudomonadaceae; Pseudomonadaceae_Group; Unclassified; otu_332557
+4322858	2	0.000149883	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_4322858
+70706	6	0.000599532	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_70706
+909624	2193	0.219129	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_909624
+4365172	1	4.9961e-05	Bacteria; Proteobacteria; Gammaproteobacteria; Pseudomonadales; Pseudomonadaceae; Pseudomonas; Unclassified; otu_4365172
+542124	1	9.99219e-05	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Corynebacteriaceae; Corynebacterium; Unclassified; otu_542124
+4444200	15	0.00112412	Bacteria; Firmicutes; Bacilli; Gemellales; Gemellaceae; Gemella; morbillorum; otu_4444200
+1061192	5	0.000749414	Bacteria; Proteobacteria; Gammaproteobacteria; Cardiobacteriales; Cardiobacteriaceae; Cardiobacterium; Unclassified; otu_1061192
+4404132	1	9.99219e-05	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Propionibacteriaceae; Propionibacteriaceae_Group; Unclassified; otu_4404132
+529839	1	9.99219e-05	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Micrococcaceae; Kocuria; Unclassified; otu_529839
+4455250	8	0.000599532	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_4455250
+4417749	3	0.000224824	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Capnocytophaga; leadbetteri; otu_4417749
+4299087	2	0.000149883	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Capnocytophaga; ochracea; otu_4299087
+4388707	96	0.00719438	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Capnocytophaga; ochracea; otu_4388707
+4399761	1	7.49414e-05	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; genomosp._C8; otu_4399761
+832598	1	7.49414e-05	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Burkholderiaceae; Burkholderia; Unclassified; otu_832598
+4359693	1	5.99532e-05	Bacteria; Firmicutes; Bacilli; Bacillales; Alicyclobacillaceae; Alicyclobacillus; Unclassified; otu_4359693
+4298702	1	7.49414e-05	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_4298702
+92874	53	0.00529586	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; IO077; otu_92874
+515747	1	7.49414e-05	Bacteria; Bacteroidetes; Bacteroidia; Bacteroidales; Prevotellaceae; Prevotella; Unclassified; otu_515747
+4473883	1	5.99532e-05	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; alactolyticus; otu_4473883
+516198	1	9.99219e-05	Bacteria; Proteobacteria; Betaproteobacteria; Neisseriales; Neisseriaceae; Neisseria; flava_mucosa_pharyngis; otu_516198
+135965	1	9.99219e-05	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Alcaligenaceae; Achromobacter; Unclassified; otu_135965
+502919	105	0.00629508	Bacteria; Firmicutes; Negativicutes; Selenomonadales; Veillonellaceae; Selenomonas; artemidis; otu_502919
+951711	246	0.0245808	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_951711
+549538	20	0.00299766	Bacteria; Proteobacteria; Gammaproteobacteria; Xanthomonadales; Xanthomonadaceae; Dokdonella; Unclassified; otu_549538
+521996	1	7.49414e-05	Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae; Streptococcus; Unclassified; otu_521996
+4308647	6	0.000599532	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Actinomycetaceae; Actinomyces; Unclassified; otu_4308647
+4323508	22	0.00164871	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Capnocytophaga; Unclassified; otu_4323508
+4317175	27	0.00269789	Bacteria; Actinobacteria; Actinobacteria; Actinomycetales; Propionibacteriaceae; Propionibacteriaceae_Group; Unclassified; otu_4317175
+834463	1	4.9961e-05	Bacteria; Proteobacteria; Betaproteobacteria; Burkholderiales; Burkholderiaceae; Burkholderia; cepacia; otu_834463
+519295	1	9.99219e-05	Bacteria; Actinobacteria; Actinobacteria; Propionibacteriales; Propionibacteriaceae; Luteococcus; Unclassified; otu_519295
+251173	1	4.9961e-05	Bacteria; Bacteroidetes; Flavobacteria; Flavobacteriales; Flavobacteriaceae; Flavobacterium; Unclassified; otu_251173
+277716	1	0.000149883	Bacteria; OD1; ZB2; Unclassified; otu_277716
+953463	10	0.00049961	Bacteria; Proteobacteria; Gammaproteobacteria; Pasteurellales; Pasteurellaceae; Aggregatibacter; AY538693; otu_953463

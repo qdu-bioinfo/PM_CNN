@@ -1,0 +1,16 @@
+Parallel-META Analysis Report
+Version 3.4.1
+Domain : Bacteria (16S rRNA)
+Input Type : rRNA Targeted Sequences
+Input File : /mnt/data6/suxq/data/HMP/trimed/SRS045771.fsa
+Alignment Mode : very-sensitive-local
+rRNA Sequence Number : 12700
+Mapped rRNA Sequence Number : 12578
+Alpha Diversity:
+Kingdom	2
+Phylum	26
+Class	44
+Order	70
+Family	115
+Genus	221
+OTU	1197
