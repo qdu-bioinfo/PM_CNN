@@ -8,6 +8,8 @@
 
 * Installation
 
+* Input format
+
 * Program running process:
   
   * Step 1: Build a phylogenetic tree (optional)
@@ -18,7 +20,7 @@
   
   * Step 4: Model training and testing
 
-* Dataset introduction
+* Dataset availability
 
 * Contact
 
