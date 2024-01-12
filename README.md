@@ -20,7 +20,7 @@
   
   * Step 4: Model training and testing
 
-* Dataset availability
+* Data availability
 
 * Contact
 
