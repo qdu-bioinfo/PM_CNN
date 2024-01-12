@@ -99,10 +99,6 @@ FastTree -nt -gtr example/output_aligned.fasta > example/data/example.tree  // y
 
 The cophenetice distance matrix is obtained by using the cophenetic function in the R package ape. The related software can be downloaded to the official website, or please contact my e-mail.
 
-R script (Get cophenetic distance):
-
-It should be noted that the input and output paths must be absolute paths.
-
 ```
 usage: PM_CNN/code/get_distance_matrix.R parameter1 parameter2 parameter3
 
