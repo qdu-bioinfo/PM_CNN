@@ -6,7 +6,7 @@
 
 * Package requirement
 
-* Installation
+* Installation environment
 
 * Input format
 
@@ -43,7 +43,7 @@ In this study, we proposed a new deep learning framework PM-CNN (Phylogenetic Mu
 git clone https://github.com/qdu-bioinfo/PM_CNN
 ```
 
-## Installation
+## Installation environment
 
 ```
 pip install -r requirements.txt
