@@ -116,7 +116,7 @@ parameter3: Output cophenetic distance matrix .csv format file
 ```
 cd PM_CNN/code
 
-Rscript get_distance_matrix.R "/home/bioinfo/wangqq/PM_CNN/example" "example.tree" "example_distance_matrix.csv"
+Rscript get_distance_matrix.R "/root/user/PM_CNN/example" "example.tree" "example_distance_matrix.csv"
 ```
 
 After obtaining the distance matrix, we aim to obtain the phylogenetic correlation between OTU. Therefore, the next step is to transform the distance matrix into the correlation matrix by the designed distance transformation formula, and then carry out hierarchical clustering based on the correlation matrix, and finally get the result of multi-layer clustering.
