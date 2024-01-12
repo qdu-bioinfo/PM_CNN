@@ -9,7 +9,7 @@
 * Installation
 
 * Program running process:
-    
+  
   * Step 1: Build a phylogenetic tree (optional)
   
   * Step 2: Get cophenetic distance matrix
@@ -17,7 +17,7 @@
   * Step 3: Distance transformation and hierarchical clustering
   
   * Step 4: Model training and testing
-  
+
 * Dataset introduction
 
 * Contact
@@ -55,12 +55,12 @@ Prior to initiating the execution of PM-CNN, it is imperative to confirm the for
 
 #### OTU table:
 
-|  | OTU1 | OTU2 | OTU3 | OTU4|
-| ------ | ------ | ------ | ------ | ------ |
-| sample1      | 0.01     | 0.03      | 0 | 0.06 |
-| sample2      | 0.05    | 0       | 0.03 | 0.001 |
-| sample3      | 0    | 0.2       | 0 | 0.01 |
-| sample4      | 0    | 0.02       | 0.01 | 0.001 |
+|         | OTU1 | OTU2 | OTU3 | OTU4  |
+| ------- | ---- | ---- | ---- | ----- |
+| sample1 | 0.01 | 0.03 | 0    | 0.06  |
+| sample2 | 0.05 | 0    | 0.03 | 0.001 |
+| sample3 | 0    | 0.2  | 0    | 0.01  |
+| sample4 | 0    | 0.02 | 0.01 | 0.001 |
 
 #### meta information:
 
@@ -70,8 +70,6 @@ Prior to initiating the execution of PM-CNN, it is imperative to confirm the for
 | sample2  | Healthy       |
 | sample3  | Gingivitis    |
 | sample4  | Periodontitis |
-
-
 
 ## Program running process
 
@@ -104,7 +102,7 @@ R script (Get cophenetic distance):
 It should be noted that the input and output paths must be absolute paths.
 
 ```
-usage: PM_CNN/code/get_dis_matrix.R parameter1 parameter2 parameter3
+usage: PM_CNN/code/get_distance_matrix.R parameter1 parameter2 parameter3
 
 parameter1: current working directory
 
@@ -136,7 +134,6 @@ usage: code/get_represent_seqs.py
 
 ```
 python clustering.py --input /root/user/PM_CNN/example/example_distance_matrix.csv --output /root/user/PM_CNN/example/output_file.csv
-
 ```
 
 ### Step 4: Model training and prediction
@@ -148,7 +145,7 @@ Now, after the processing of Steps 1-3, we now have the clustered feature order.
 #### You can see the parameters of PM-CNN through the comment information:
 
 ```
-usage: model/PMCNN.py [--train] //train PM-CNN model [--test] //test PM-CNN model
+usage: code/PMCNN.py [--train] //train PM-CNN model [--test] //test PM-CNN model
                                         [--train_otu_table] //Microbial abundance table
                                         [--meta] //Sample disease information
                                         [--test_otu_table] //test set
@@ -165,6 +162,7 @@ usage: model/PMCNN.py [--train] //train PM-CNN model [--test] //test PM-CNN mode
 The training of the model is run using the case microbial sample abundance table under the example file so that readers can quickly get started with PM-CNN.
 
 #### Training:
+
 You can view the training process directly in the console.
 
 ```
@@ -174,6 +172,7 @@ python PMCNN.py --train --train_otu_table ../example/train_data/example_abundanc
 ```
 
 #### Testing:
+
 You can view test results directly in the console.
 
 ```
@@ -184,13 +183,11 @@ python PMCNN.py --test --test_otu_table ../example/test_data/example_test.csv
 
 ### [Dataset 1](https://github.com/qdu-bioinfo/PM_CNN/tree/main/data/the%20human%20gut%20microbiome%20(dataset1))
 
-
 The human oral microbiome data contains 1587 samples with 1554 OTUs. Contains three label types: Control(653), Periodontitis(274), and Gingivitis(660), which are marked with 0, 1, and 2 respectively. See our paper for details.
 
 ### [Dataset 2](https://github.com/qdu-bioinfo/PM_CNN/tree/main/data/the%20human%20oral%20microbiom%20(dataset2))
 
 The human gut microbiome data contains 3113 samples with 5597 OTUs. Contains five label types: Control(1418), IBD(993), HIV(360), EDD(222), and CRC(120), which are marked with 0, 1, 2, 3, and 4 respectively. See our paper for details.
-
 
 ## Contact
 
